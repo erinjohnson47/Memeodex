@@ -11,7 +11,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 app.use(logger('dev'));
 app.use(session({
-    secret: 'THIS IS A RANDOM SECRET STRING', 
+    secret: 'potato rolodex happy bark bark', 
     resave: false, 
     saveUninitialized: false
 }));
