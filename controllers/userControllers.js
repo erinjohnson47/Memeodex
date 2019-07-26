@@ -22,6 +22,16 @@ const userController = {
     register:(req, res) => {
             console.log('this is working')
             res.render('users/register.ejs')
+    },
+    create: async (req, res) => {
+        try {
+            const createdUser = await User.create(req.body);
+            console.log(createdUser);
+            res.redirect('users/:id')
+        } catch (err) {
+            console.log(err);
+            res.send(err);
+        }
     }
 }
 
