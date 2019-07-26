@@ -4,6 +4,7 @@ const memeController = require('../controllers/memeControllers');
 
 router.get('/', memeController.index);
 router.get('/new', memeController.new);
+router.post('/', memeController.create)
 
 
 module.exports = router;

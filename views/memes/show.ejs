@@ -1,0 +1,15 @@
+<%- include('../partials/header', {title: 'Memodex Meme Index'})%>
+    <main>
+        <section>
+            <h2>Meme Details:</h2>
+                <ul>
+                    <li>Meme Title: <%=meme.title%></li><br/>
+                    <div>Meme Description: <%=meme.description%></div>
+                    <div><img src="<%=meme.urlMeme%>"/></div>
+                </ul>
+        </section>
+        <section>
+                <a href="/memes/<%=meme._id%>/edit">Edit</a>
+            </section>
+        </main>
+<%- include('../partials/footer')%>
