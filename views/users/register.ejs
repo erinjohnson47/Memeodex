@@ -1,4 +1,8 @@
-REGISTRATION:
+<%- include('../partials/header', {title: 'Memodex Registrtion'})%>
+<header>
+    <h1>REGISTER to use Memodex</h1>
+</header>
+<main>
 <form action='/users' method='POST'>
 Enter your name: <input type="text" name="name" placeholder='name'><br/>
 Choose a username:<input type="text" name="username" placeholder='username'><br/>
@@ -6,6 +10,7 @@ Create a password: <input type="password" name='password' placeholder='password'
 Please re-type your password:<input type="password" name='password-confirm' placeholder='confirm your password' required><br/> 
 Enter your email: <input type="email" name="email" placeholder='email address' required><br/>
 Date of birth:<input type='date' name='dob' required>
-profileImg:<input type='text' name='profileImg'>
+profileImg:<input type='text' name='profileImg'><br/>
 <input type="submit" value="Register!"/>
 </form>
+</main>
