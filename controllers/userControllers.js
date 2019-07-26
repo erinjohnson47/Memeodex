@@ -18,6 +18,10 @@ const userController = {
             console.log(err);
             res.send(err);
         }
+    },
+    register:(req, res) => {
+            console.log('this is working')
+            res.render('users/register.ejs')
     }
 }
 
