@@ -4,8 +4,8 @@ const userController = require('../controllers/userControllers');
 
 router.get('/register', userController.register);
 router.get('/', userController.index);
-// router.post('/', userController.create);
-// router.get('/:id', userController.profile);
+router.post('/', userController.create);
+router.get('/:id', userController.profile);
 // router.get('/:id/edit', userContoller.edit);
 // router.put('/:id', userController.update);
 // router.delete('/:id', userController.delete);

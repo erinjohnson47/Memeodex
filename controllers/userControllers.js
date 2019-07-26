@@ -22,6 +22,29 @@ const userController = {
     register:(req, res) => {
             console.log('this is working')
             res.render('users/register.ejs')
+    },
+    create: async (req, res) => {
+        try {
+            const createdUser = await User.create(req.body);
+            console.log(createdUser);
+            res.redirect('users/:id')
+        } catch (err) {
+            console.log(err);
+            res.send(err);
+        }
+    },
+    profile: async (req, res) => {
+        try {
+            const findUser = await User.findOne({_id:req.params.id});
+            console.log(findUser, 'foundUser in show/profile route');
+            const findMemes = await Meme.find({username: req.params.id});
+            console.log(findMemes, '<-findMemes in profile route');
+            const [foundUser, foundMemes] = await Promise.all([findUser,findMemes]);
+            res.render('users/show.ejs');
+        } catch (err) {
+            console.log(err);
+            res.send(err);
+        }
     }
 }
 
