@@ -32,6 +32,16 @@ const userController = {
             console.log(err);
             res.send(err);
         }
+    },
+    profile: async (req, res) => {
+        try {
+            const foundUser = await User.findOne({_id:req.params.id});
+            console.log(foundUser, 'foundUser in show/profile route');
+            res.send('route works')
+        } catch (err) {
+            console.log(err);
+            res.send(err);
+        }
     }
 }
 
