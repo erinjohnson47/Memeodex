@@ -16,6 +16,11 @@ app.use(session({
     saveUninitialized: false
 }));
 
+app.get('/', (req, res) => {
+    console.log('this works')
+    res.render('home.ejs')
+})
+
 app.listen(3000, () => {
     console.log('listening on port 3000')
 });

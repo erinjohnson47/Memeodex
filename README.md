@@ -1,7 +1,7 @@
 # MEMEODEX
 //put an image/logo here
 
-## A virtual roladex of your favorite memes!
+## A virtual rolodex of your favorite memes!
 ### Why do you need this?
 > Your BFF texts something funny and you want to respond with your favorite gif or a screenshot you took of a relateable meme that totally applies to their hilarious joke.  But, you have 5,467 images in your phone, where *IS* that screenshot you took of that one meme? You can **totally** picture it, but by the time you've scrolled through 3 months of photos in your phone, *the moment has passed*. You now seem 11% less funny than you actually are!   
 > ![aint nobody got time for that](https://i.kym-cdn.com/photos/images/newsfeed/000/284/529/e65.gif)
@@ -14,7 +14,7 @@ Memeodex is a personal database curated **by** you, **for** you, to store links 
 1. [click here to use Memeodex](github link to memeodex here)
 2. click "Register" on the home page and create a username and profile.
 3. Start adding your memes to your database: 
-    - all you need is a url (where you meme lives on the internet!), a title (you choose this), a description (optional), hashtags (also optional, but they will help you in your search later, as your meme database grows!).
+    - all you need is a url (where your meme lives on the internet!), a title (you choose this), a description (optional), hashtags (also optional, but they will help you in your search later, as your meme database grows!).
 4. You can also explore other users' memes, like them, comment on them, and save them to your own profile for later.
 
 ### Technologies Used
