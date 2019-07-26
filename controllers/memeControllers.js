@@ -10,7 +10,19 @@ const memeController = {
         } catch(err) {
             res.send(err)
         }
+    },
+    new: async (req, res) => {
+        try {
+            res.render('memes/new.ejs')
+        } catch(err) {
+            res.send(err)
+        }
     }
+
+
+
+
+
 
 }
 
