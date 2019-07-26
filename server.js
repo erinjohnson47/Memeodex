@@ -3,8 +3,8 @@ const methodOverride = require('method-override');
 const session = require('express-session')
 const app = express();
 const logger = require('morgan');
-
-require('./db/db');
+const userRoutes = require('./routers/userRoutes')
+const memeRoutes = require('./routers/memeRoutes')
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -16,6 +16,11 @@ app.use(session({
     resave: false, 
     saveUninitialized: false
 }));
+
+require('./db/db');
+
+app.use('/users', userRoutes);
+app.use('/memes', memeRoutes);
 
 app.get('/', (req, res) => {
     res.render('home.ejs')
