@@ -5,4 +5,14 @@
             <a href='/memes/new'> Be a Memestar and add a Meme!</a>
         </li>
     </ul>
+    <div>
+        <% for(let i = 0; i < memes.length; i++){ %>
+                    <li>
+                        <a href="/memes/<%=memes[i]._id%>"><%=memes[i].title%></a>
+                    </li>
+                    <div>
+                        <img src="<%=memes[i].urlMeme%>"/>
+                    </div>
+                <% } %>
+    </div>
 <%- include('../partials/footer')%>
