@@ -1,7 +1,7 @@
 # MEMEODEX
 //put an image/logo here
 
-## A virtual roladex of your favorite memes!
+## A virtual rolodex of your favorite memes!
 ### Why do you need this?
 > Your BFF texts something funny and you want to respond with your favorite gif or a screenshot you took of a relateable meme that totally applies to their hilarious joke.  But, you have 5,467 images in your phone, where *IS* that screenshot you took of that one meme? You can **totally** picture it, but by the time you've scrolled through 3 months of photos in your phone, *the moment has passed*. You now seem 11% less funny than you actually are!   
 > ![aint nobody got time for that](https://i.kym-cdn.com/photos/images/newsfeed/000/284/529/e65.gif)
