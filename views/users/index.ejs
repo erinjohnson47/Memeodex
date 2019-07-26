@@ -1,0 +1,11 @@
+<%- include('../partials/header', {title: 'Memodex User Index'})%>
+<header>
+    <h1>Memeodex Users</h1>
+</header>
+<main>
+    <ul><%for (let i=0; i<users.length; i++) {%>
+        <li><%=users[i].username%></li>
+    <%}%>
+    </ul>
+</main>
+<%- include('../partials/footer')%>

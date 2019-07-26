@@ -3,8 +3,6 @@ const User = require('../models/User');
 const Meme = require('../models/Meme');
 const bcrypt = require('bcryptjs')
 
-
-
 const userController = {
     index: async (req, res) => {
         console.log('-------------------------')

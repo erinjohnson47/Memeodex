@@ -5,10 +5,10 @@ const memeSchema = new mongoose.Schema({
     title: {type: String, required: true},
     description: String,
     date: String,
-    username: [{
+    username: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }],
+    },
     hashtag: [String]
 })
 
