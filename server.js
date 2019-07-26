@@ -9,6 +9,7 @@ require('./db/db');
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
+app.use(express.static('public'));
 app.use(logger('dev'));
 app.use(session({
     secret: 'potato rolodex happy bark bark', 
@@ -17,7 +18,6 @@ app.use(session({
 }));
 
 app.get('/', (req, res) => {
-    console.log('this works')
     res.render('home.ejs')
 })
 
