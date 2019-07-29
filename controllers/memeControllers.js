@@ -30,13 +30,45 @@ const memeController = {
         } catch(err) {
             res.send(err)
         }
+    },
+    meme: async (req, res) => {
+        try {
+            const foundMeme = await Meme.findById(req.params.id)
+            res.render('memes/show.ejs', {
+                meme: foundMeme
+            })
+        } catch(err){
+            res.send(err)
+        }
+    },
+    edit: async (req, res) => {
+        try {
+            const foundMeme = await Meme.findById(req.params.id)
+            res.render('memes/edit.ejs', {
+                meme: foundMeme
+        });
+        } catch(err) {
+            res.send(err)
+        }
+    },
+    update: async (req, res) => {
+        try {
+            const foundMeme = await Meme.findById(req.params.id)
+            res.render('memes/edit.ejs', {
+                meme: foundMeme
+        });
+        } catch(err) {
+            res.send(err)
+        }
+    },
+    delete: async(req,res) => {
+        try {
+          const foundMeme = await Meme.findByIdAndRemove(req.params.id);
+          res.redirect('/memes')
+        } catch(err) {
+          res.send(err)
+        }
     }
-
-
-
-
-
-
 }
 
 module.exports = memeController;
