@@ -9,7 +9,12 @@
                 </ul>
         </section>
         <section>
-                <a href="/memes/<%=meme._id%>/edit">Edit</a>
-            </section>
+          <form action="/memes/<%=meme._id%>?_method=DELETE" method="post">
+              <input type="submit" value="Delete Meme"/>
+          </form>
+        </section>
+        <section>
+          <a href="/memes/<%=meme._id%>/edit">Edit</a>
+        </section>
         </main>
 <%- include('../partials/footer')%>
