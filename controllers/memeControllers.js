@@ -26,16 +26,27 @@ const memeController = {
         console.log(req.body)
         try {
             const createMeme = await Meme.create(req.body);
-            res.redirect('memes/')
+            const user = await User.findById( req.session.userId);
+
+            createMeme.user = user.id;
+            createMeme.save();
+            console.log(createMeme.user, '<-createMeme.user in create meme', req.body, '<-req.body in create route')
+        // req.body.username = req.session.username
+            res.redirect('/memes')
         } catch(err) {
+            console.log(err)
             res.send(err)
         }
     },
     meme: async (req, res) => {
         try {
-            const foundMeme = await Meme.findById(req.params.id)
+            const foundMeme = await Meme.findById(req.params.id).populate('user');
+            console.log(req.params.id, '<-req.params.id in show route')
+            const foundUser = await User.findById(foundMeme.user);
+            console.log(foundMeme, '<-foundMeme in show route')
             res.render('memes/show.ejs', {
-                meme: foundMeme
+                meme: foundMeme,
+                user: foundUser
             })
         } catch(err){
             res.send(err)

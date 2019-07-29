@@ -121,7 +121,7 @@ const userController = {
             try {
                 const findUser = await User.findOne({_id:req.params.id});
                 console.log(findUser, 'foundUser in show/profile route');
-                const findMemes = await Meme.find({username: req.params.id});
+                const findMemes = await Meme.find({user: req.params.id});
                 console.log(findMemes, '<-findMemes in profile route');
                 const [foundUser, foundMemes] = await Promise.all([findUser,findMemes]);
                 console.log(req.session, "this is the session")
