@@ -1,3 +1,51 @@
+@font-face {
+    font-family: 'impact';
+    src: url('impact.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 body {
+    font-family: 'impact';
+    text-transform: uppercase;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
     background-color: aquamarine;
+}
+
+.logoImg {
+    width: 50px;
+    height: 50px;
+}
+
+.siteName {
+    text-align: center;
+    font-size: 50px;
+}
+
+nav {
+    text-align: center;
+}
+
+.navbar {
+    color: white;
+    text-decoration: none;
+}
+
+
+
+
+
+
+footer {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;    
 }
