@@ -13,12 +13,11 @@ const isLogged = (req, res, next) => {
 
 router.get('/register', userController.register);
 router.post('/login',userController.login);
-router.get('/', userController.index);
+router.get('/', isLogged, userController.index);
 router.post('/', userController.create);
-router.get('/logout', userController.logout)
-router.get('/:id', userController.profile);
+router.get('/:id', isLogged,userController.profile);
 router.get('/:id/edit', isLogged, userController.edit);
-router.put('/:id', userController.update);
-router.delete('/:id', userController.delete);
+router.put('/:id', isLogged, userController.update);
+router.delete('/:id', isLogged, userController.delete);
 
 module.exports = router;
