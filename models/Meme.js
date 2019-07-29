@@ -5,7 +5,7 @@ const memeSchema = new mongoose.Schema({
     title: {type: String, required: true},
     description: String,
     date: String,
-    username: {
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },

@@ -8,6 +8,8 @@ Username:<%=user.username%><br/>
 Email:<%=user.email%><br/>
 Date of birth:<%=user.dob%><br/>
 profileImg:<img src='<%=user.profileImg%>' alt='user profile photo'><br/>
+Your Memes:
+
 <form method='POST' action='/users/<%=user._id%>?_method=DELETE'> <input type='submit' value='Unsubscribe and delete your profile*'>
 *Warning: this will delete your profile, all associated information and all memes associated with your username!
 </form>
