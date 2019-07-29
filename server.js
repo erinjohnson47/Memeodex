@@ -26,6 +26,16 @@ app.get('/', (req, res) => {
     res.render('home.ejs')
 })
 
+app.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            res.send(err)
+    } else {
+        res.redirect('/')
+    }
+    })
+})
+
 app.listen(3000, () => {
     console.log('listening on port 3000')
 });

@@ -1,6 +1,9 @@
 <%- include('partials/header', {title: 'Memodex Home Page'})%>
-
-
-
-
+<h2>Login</h2>
+    <form action="/users/login" method="POST">
+    <input type='text' name="username" placeholder='username'><br/>
+    <input type='password' name="password" placeholder='password'><br/>
+    <input type="submit" value="login"/>
+    </form><br/>
+    <a href='/users/register'>new users click here to sign up</a>
 <%- include('partials/footer')%>

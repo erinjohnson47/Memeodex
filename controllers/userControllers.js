@@ -100,30 +100,39 @@ const userController = {
         }
     },
     update: async (req, res) => {
-        try {
-            const findUser = await User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true});
-            console.log(findUser);
-            res.redirect(`/users/${findUser._id}`)
-        } catch (err) {
-            console.log(err);
-            res.send(err)
+        const findUser = await User.findOne({_id:req.params.id});
+            if (req.session.logged === true && findUser === req.session.userId){
+                try {
+                    const updateUser = await User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true});
+                    console.log(req.params.id, '<-req.params.id')
+                    
+                    console.log(updateUser, '<-updateUser in update route');
+                    res.redirect(`/users/${updateUser._id}`)
+                } catch (err) {
+                    console.log(err);
+                    res.send(err)
+                } 
+        } else {
+        // req.session.message = 'Username or Password incorrect';
+        res.redirect('/');
         }
     },
     profile: async (req, res) => {
-        try {
-            const findUser = await User.findOne({_id:req.params.id});
-            console.log(findUser, 'foundUser in show/profile route');
-            const findMemes = await Meme.find({username: req.params.id});
-            console.log(findMemes, '<-findMemes in profile route');
-            const [foundUser, foundMemes] = await Promise.all([findUser,findMemes]);
-            res.render('users/show.ejs', {
-                user: foundUser,
-                memes: foundMemes
-            });
-        } catch (err) {
-            console.log(err);
-            res.send(err);
-        }
+            try {
+                const findUser = await User.findOne({_id:req.params.id});
+                console.log(findUser, 'foundUser in show/profile route');
+                const findMemes = await Meme.find({username: req.params.id});
+                console.log(findMemes, '<-findMemes in profile route');
+                const [foundUser, foundMemes] = await Promise.all([findUser,findMemes]);
+                console.log(req.session, "this is the session")
+                res.render('users/show.ejs', {
+                    user: foundUser,
+                    memes: foundMemes
+                });
+            } catch (err) {
+                console.log(err);
+                res.send(err);
+            }
     }
 }
 
