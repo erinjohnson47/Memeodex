@@ -69,12 +69,12 @@ const userController = {
     },
     edit: async (req, res) => {
         try {
-            const findUser = User.findOne({_id:req.params.id});
+            const findUser = await User.findOne({_id:req.params.id});
             console.log(findUser, 'foundUser in edit route');
-            const findMemes = Meme.find({username: req.params.id});
+            const findMemes = await Meme.find({username: req.params.id});
             console.log(findMemes, '<-findMemes in profile route');
             const [foundUser, foundMemes] = await Promise.all([findUser,findMemes]);
-            res.render('users/show.ejs', {
+            res.render('users/edit.ejs', {
                 user: foundUser,
                 memes: foundMemes
             });
@@ -84,13 +84,23 @@ const userController = {
         }
 
     },
+    update: async (req, res) => {
+        try {
+            const findUser = await User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true});
+            console.log(findUser);
+            res.redirect(`/users/${findUser._id}`)
+        } catch (err) {
+            console.log(err);
+            res.send(err)
+        }
+    },
     profile: async (req, res) => {
         try {
-            const findUser = User.findOne({_id:req.params.id});
+            const findUser = await User.findOne({_id:req.params.id});
             console.log(findUser, 'foundUser in show/profile route');
-            const findMemes = Meme.find({username: req.params.id});
+            const findMemes = await Meme.find({username: req.params.id});
             console.log(findMemes, '<-findMemes in profile route');
-            const [foundUser, foundMemes] = await Promise.all([foundUser,foundMemes]);
+            const [foundUser, foundMemes] = await Promise.all([findUser,findMemes]);
             res.render('users/show.ejs', {
                 user: foundUser,
                 memes: foundMemes

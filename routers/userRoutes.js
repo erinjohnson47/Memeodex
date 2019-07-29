@@ -7,8 +7,8 @@ router.post('/login',userController.login);
 router.get('/', userController.index);
 router.post('/', userController.create);
 router.get('/:id', userController.profile);
-// router.get('/:id/edit', userContoller.edit);
-// router.put('/:id', userController.update);
+router.get('/:id/edit', userController.edit);
+router.put('/:id', userController.update);
 // router.delete('/:id', userController.delete);
 
 module.exports = router;
