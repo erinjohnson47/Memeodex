@@ -68,6 +68,7 @@ const userController = {
         }
     },
     edit: async (req, res) => {
+        //add if statement here that checks that the logged in user matches the user whose profile is being edited
         try {
             const findUser = await User.findOne({_id:req.params.id});
             console.log(findUser, 'foundUser in edit route');
@@ -83,6 +84,20 @@ const userController = {
             res.send(err);
         }
 
+    },
+    delete: async (req, res) => {
+        //add if statement here that checks that the logged in user matches the user whose profile is being edited
+        try {
+            const deleteUser = await User.findOneAndRemove({_id:req.params.id});
+            console.log(deleteUser, 'deleteUser in delete route');
+            // const findMemes = await Meme.remove({username: req.params.id});
+            // console.log(findMemes, '<-findMemes in profile route');
+            // const [deletedUser, foundMemes] = await Promise.all([deleteUser,findMemes]);
+            res.redirect('/');
+        } catch (err) {
+            console.log(err);
+            res.send(err);
+        }
     },
     update: async (req, res) => {
         try {
