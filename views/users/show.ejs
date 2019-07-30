@@ -10,11 +10,13 @@ Email:<%=user.email%><br/>
 Date of birth:<%=user.dob%><br/>
 profileImg:<img src='<%=user.profileImg%>' alt='user profile photo'><br/>
 Your Memes:
- <ul><%for (let i=0; i<memes.length; i++) {%>
-        <li><a href="/memes/<%=memes[i]._id%>"><%=memes[i].title%></a></li>
-    <%}%>
-    </ul>
-
+<section class='memes'>
+        <% for(let i = 0; i < memes.length; i++){ %>
+            <div class='memes'>
+                <a href='/memes/<%=memes[i]._id%>'><img src="<%=memes[i].urlMeme%>" alt='<%=memes[i].title%>'/></a>
+            </div>
+        <% } %>
+        </section>
 <form method='POST' action='/users/<%=user._id%>?_method=DELETE'> <input type='submit' value='Unsubscribe and delete your profile*'>
 *Warning: this will delete your profile, all associated information and all memes associated with your username!
 </form>
