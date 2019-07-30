@@ -5,44 +5,49 @@ const bcrypt = require('bcryptjs')
 
 const userController = {
     index: async (req, res) => {
-        if (req.session.logged === true) {
-            req.session.username;
-          }
         try {
-        const foundUsers = await User.find({});
-        console.log(foundUsers, '<-foundUsers index route');
-        res.render('users/index.ejs', {
-            users: foundUsers
-        })
+            const foundUsers = await User.find({});
+            res.render('users/index.ejs', {
+                users: foundUsers
+            })
         } catch (err) {
-            console.log(err);
             res.send(err);
         }
     },
     register: (req, res) => {
-            res.render('users/register.ejs')
+        res.render('users/register.ejs', {
+            message: req.session.message,
+        })
     },
     create: async (req, res) => {
-        const password = req.body.password;
-        const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-        req.body.password = hashedPassword;
-        try {
-            const createdUser = await User.create(req.body);
-            console.log(createdUser, '<-createdUser');
-            req.session.userId = createdUser._id;
-            req.session.username = createdUser.username;
-            req.session.logged = true;
-            console.log(createdUser._id, '<-createdUser._id')
-            res.redirect(`users/${createdUser._id}`)
-        } catch (err) {
-            console.log(err);
-            res.send(err);
-        }
+        const foundUsername = await User.findOne({username: req.body.username});
+        const foundEmail = await User.findOne({email: req.body.email});
+            if (foundUsername) {
+                req.session.message = 'The username you selected is already in use, please select another.'
+                res.redirect('users/register')
+            } else if (foundEmail) {
+                req.session.message = 'There is already an account registered with that email address.';
+                res.redirect('users/register')
+            } else {
+                const password = req.body.password;
+                const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+                req.body.password = hashedPassword;
+                try {
+                    const createdUser = await User.create(req.body);
+                    console.log(createdUser, '<-createdUser');
+                    req.session.userId = createdUser._id;
+                    req.session.username = createdUser.username;
+                    req.session.logged = true;
+                    console.log(createdUser._id, '<-createdUser._id')
+                    res.redirect(`users/${createdUser._id}`)
+                } catch (err) {
+                    res.send(err);
+                }
+            }
     },
     login: async (req, res) => {
         try {
             const foundUser = await User.findOne({username: req.body.username});
-            console.log(foundUser.username, '<--foundUser at login route', foundUser.username.toLowerCase(), '<-found user to lower case');
             if(foundUser.username.toLowerCase()) {
                 if(bcrypt.compareSync(req.body.password, foundUser.password)) {
                     req.session.userId = foundUser._id;
@@ -50,15 +55,14 @@ const userController = {
                     req.session.logged = true; 
                     res.redirect(`/users/${foundUser._id}`); 
                 } else {
-                    req.session.message = 'Username or Password incorrect';
+                    req.session.message = 'Username or Password is incorrect';
                     res.redirect('/');
                 } 
             } else { 
-                req.session.message = 'Username or Password incorrect';
+                req.session.message = 'Username or Password is incorrect';
                 res.redirect('/');
             }
         } catch (err) {
-            console.log(err)
             res.send(err)
         }
     },
@@ -67,20 +71,17 @@ const userController = {
         if (findUser._id.toString() === req.session.userId.toString()){
             try {
                 const findUser = await User.findOne({_id:req.params.id});
-                console.log(findUser, 'foundUser in edit route');
                 const findMemes = await Meme.find({username: req.params.id});
-                console.log(findMemes, '<-findMemes in profile route');
                 const [foundUser, foundMemes] = await Promise.all([findUser,findMemes]);
                 res.render('users/edit.ejs', {
                     user: foundUser,
                     memes: foundMemes
                 });
             } catch (err) {
-                console.log(err);
                 res.send(err);
             }
         } else {
-            req.session.message = 'You do not have permission to edit this profile.';
+            req.session.message = 'Sorry, you do not have permission to edit this profile.';
             res.redirect(`/users/${findUser._id}`);
             }
     },
@@ -90,12 +91,9 @@ const userController = {
             try {
                 const deleteUser = await User.findOneAndRemove({_id:req.params.id});
                 const deleteMemes = await Meme.remove({user: req.params.id})
-                console.log(deleteUser, 'deleteUser in delete route');
-                console.log(deleteMemes, 'deleteMemes in delete route');
                 const [deletedUser, deletedMemes] = await Promise.all([deleteUser, deleteMemes]);
                 res.redirect('/');
             } catch (err) {
-                console.log(err);
                 res.send(err);
             }
         } else {
@@ -113,20 +111,16 @@ const userController = {
                         const password = req.body.password;
                         const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
                         req.body.password = hashedPassword;
-                        console.log(hashedPassword, '<-hashedPassword in update/put route')
                     }
                     const updateUser = await User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true});
-                    console.log(req.params.id, '<-req.params.id')
-                    console.log(updateUser, '<-updateUser in update route');
                     res.redirect(`/users/${updateUser._id}`)
                 } catch (err) {
-                    console.log(err);
                     res.send(err)
                 } 
         } else {
-        req.session.message = 'You do not have permission to edit this profile.';
-        res.redirect('/');
-        }
+            req.session.message = 'Sorry, you do not have permission to edit this profile.';
+            res.redirect('/');
+            }
     },
     profile: async (req, res) => {
             try {
