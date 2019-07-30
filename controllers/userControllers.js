@@ -86,17 +86,23 @@ const userController = {
 
     },
     delete: async (req, res) => {
-        //add if statement here that checks that the logged in user matches the user whose profile is being edited
+        console.log('delete route before if statement')
+        const findUser = await User.findOne({_id:req.params.id});
+            if (req.session.logged === true && findUser._id.toString() === req.session.userId.toString()){
         try {
             const deleteUser = await User.findOneAndRemove({_id:req.params.id});
+            const deleteMemes = await Meme.remove({user: req.params.id})
             console.log(deleteUser, 'deleteUser in delete route');
-            // const findMemes = await Meme.remove({username: req.params.id});
-            // console.log(findMemes, '<-findMemes in profile route');
-            // const [deletedUser, foundMemes] = await Promise.all([deleteUser,findMemes]);
+            console.log(deleteMemes, 'deleteMemes in delete route');
+            const [deletedUser, deletedMemes] = await Promise.all([deleteUser, deleteMemes]);
             res.redirect('/');
         } catch (err) {
             console.log(err);
             res.send(err);
+        }
+    } else {
+        req.session.message = 'You do not have permission to delete this profile.';
+        res.redirect('/');
         }
     },
     update: async (req, res) => {
@@ -113,7 +119,7 @@ const userController = {
                     res.send(err)
                 } 
         } else {
-        // req.session.message = 'Username or Password incorrect';
+        req.session.message = 'You do not have permission to edit this profile.';
         res.redirect('/');
         }
     },
