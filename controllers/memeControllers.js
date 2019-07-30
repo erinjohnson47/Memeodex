@@ -25,6 +25,10 @@ const memeController = {
     create: async (req, res) => {
         console.log(req.body)
         try {
+            if(req.body.isVideo === 'on') {
+                req.body.isVideo = true;
+            }
+            console.log(req.body, "<-----req.body here")
             const createMeme = await Meme.create(req.body);
             const user = await User.findById( req.session.userId);
 
