@@ -4,9 +4,10 @@ const memeController = require('../controllers/memeControllers');
 
 const isLogged = (req, res, next) => {
     if (req.session.logged) {
+        req.session.message  = '';
         next()
     } else {
-        req.session.message = 'You must be logged in';
+        req.session.message = 'Please login to access this page.';
         res.redirect('/');
     }
 }

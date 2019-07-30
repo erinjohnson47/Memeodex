@@ -27,6 +27,7 @@ const memeController = {
         try {
             if(req.body.isVideo === 'on') {
                 req.body.isVideo = true;
+                req.body.urlMeme = req.body.urlMeme.split('watch?v=').join('embed/')
             }
             console.log(req.body, "<-----req.body here")
             const createMeme = await Meme.create(req.body);

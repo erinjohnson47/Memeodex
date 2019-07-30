@@ -23,7 +23,9 @@ app.use('/users', userRoutes);
 app.use('/memes', memeRoutes);
 
 app.get('/', (req, res) => {
-    res.render('home.ejs')
+    res.render('home.ejs', {
+        message: req.session.message
+    })
 })
 
 app.get('/logout', (req, res) => {
