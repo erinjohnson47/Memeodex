@@ -20,7 +20,6 @@ const userController = {
         }
     },
     register: (req, res) => {
-            console.log('this is working')
             res.render('users/register.ejs')
     },
     create: async (req, res) => {
@@ -43,8 +42,8 @@ const userController = {
     login: async (req, res) => {
         try {
             const foundUser = await User.findOne({username: req.body.username});
-            console.log(foundUser, '<--foundUser at login route');
-            if(foundUser) {
+            console.log(foundUser.username, '<--foundUser at login route', foundUser.username.toLowerCase(), '<-found user to lower case');
+            if(foundUser.username.toLowerCase()) {
                 if(bcrypt.compareSync(req.body.password, foundUser.password)) {
                     req.session.userId = foundUser._id;
                     req.session.username = foundUser.username;
@@ -66,47 +65,47 @@ const userController = {
     edit: async (req, res) => {
         const findUser = await User.findOne({_id:req.params.id});
         if (findUser._id.toString() === req.session.userId.toString()){
-        try {
-            const findUser = await User.findOne({_id:req.params.id});
-            console.log(findUser, 'foundUser in edit route');
-            const findMemes = await Meme.find({username: req.params.id});
-            console.log(findMemes, '<-findMemes in profile route');
-            const [foundUser, foundMemes] = await Promise.all([findUser,findMemes]);
-            res.render('users/edit.ejs', {
-                user: foundUser,
-                memes: foundMemes
-            });
-        } catch (err) {
-            console.log(err);
-            res.send(err);
-        }
-    } else {
-        req.session.message = 'You do not have permission to edit this profile.';
-        res.redirect('/');
-        }
+            try {
+                const findUser = await User.findOne({_id:req.params.id});
+                console.log(findUser, 'foundUser in edit route');
+                const findMemes = await Meme.find({username: req.params.id});
+                console.log(findMemes, '<-findMemes in profile route');
+                const [foundUser, foundMemes] = await Promise.all([findUser,findMemes]);
+                res.render('users/edit.ejs', {
+                    user: foundUser,
+                    memes: foundMemes
+                });
+            } catch (err) {
+                console.log(err);
+                res.send(err);
+            }
+        } else {
+            req.session.message = 'You do not have permission to edit this profile.';
+            res.redirect(`/users/${findUser._id}`);
+            }
     },
     delete: async (req, res) => {
         const findUser = await User.findOne({_id:req.params.id});
-            if (findUser._id.toString() === req.session.userId.toString()){
-        try {
-            const deleteUser = await User.findOneAndRemove({_id:req.params.id});
-            const deleteMemes = await Meme.remove({user: req.params.id})
-            console.log(deleteUser, 'deleteUser in delete route');
-            console.log(deleteMemes, 'deleteMemes in delete route');
-            const [deletedUser, deletedMemes] = await Promise.all([deleteUser, deleteMemes]);
-            res.redirect('/');
-        } catch (err) {
-            console.log(err);
-            res.send(err);
-        }
-    } else {
-        req.session.message = 'You do not have permission to delete this profile.';
-        res.redirect(`/users/${foundUser._id}`);
+        if (findUser._id.toString() === req.session.userId.toString()){
+            try {
+                const deleteUser = await User.findOneAndRemove({_id:req.params.id});
+                const deleteMemes = await Meme.remove({user: req.params.id})
+                console.log(deleteUser, 'deleteUser in delete route');
+                console.log(deleteMemes, 'deleteMemes in delete route');
+                const [deletedUser, deletedMemes] = await Promise.all([deleteUser, deleteMemes]);
+                res.redirect('/');
+            } catch (err) {
+                console.log(err);
+                res.send(err);
+            }
+        } else {
+            req.session.message = 'You do not have permission to delete this profile.';
+            res.redirect(`/users/${findUser._id}`);
         }
     },
     update: async (req, res) => {
         const findUser = await User.findOne({_id:req.params.id});
-            if (req.session.logged === true && findUser === req.session.userId){
+            if (findUser._id.toString() === req.session.userId.toString()){
                 try {
                     const updateUser = await User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true});
                     console.log(req.params.id, '<-req.params.id')
