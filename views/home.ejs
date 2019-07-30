@@ -1,13 +1,18 @@
 <%- include('partials/header', {title: 'Memodex Home Page'})%>
 <%- include('partials/register')%>
+<% if(isLogged) {%>
+    <%-include('partials/logout')%>
+<%}%>
 <br/>
  <span>
     <%=message%>
 </span>
-<h2>Login</h2>
-    <form action="/users/login" method="POST">
-    <input type='text' name="username" placeholder='username'><br/>
-    <input type='password' name="password" placeholder='password'><br/>
-    <input type="submit" value="login"/>
-    </form><br/>
+<% if(isLogged != true) {%>
+    <h2>Login</h2>
+        <form action="/users/login" method="POST">
+        <input type='text' name="username" placeholder='username'><br/>
+        <input type='password' name="password" placeholder='password'><br/>
+        <input type="submit" value="login"/>
+        </form><br/>
+    <%}%>
 <%- include('partials/footer')%>
