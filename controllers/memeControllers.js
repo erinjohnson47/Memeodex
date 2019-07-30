@@ -26,13 +26,12 @@ const memeController = {
         console.log(req.body)
         try {
             const createMeme = await Meme.create(req.body);
-            const user = await User.findById( req.session.userId);
-
+            const user = await User.findById(req.session.userId);
             createMeme.user = user.id;
             createMeme.save();
             console.log(createMeme.user, '<-createMeme.user in create meme', req.body, '<-req.body in create route')
         // req.body.username = req.session.username
-            res.redirect('/memes')
+            res.redirect(`/users/${user.id}`)
         } catch(err) {
             console.log(err)
             res.send(err)
