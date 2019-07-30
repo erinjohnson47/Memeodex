@@ -25,9 +25,10 @@ Your Memes:
                     </div>
                 <% } %>
     </section>
-
-<form method='POST' action='/users/<%=user._id%>?_method=DELETE'> <input type='submit' value='Unsubscribe and delete your profile*'>
-*Warning: this will delete your profile, all associated information and all memes associated with your username!
-</form>
+<% if (userId === user._id.toString()) { %>
+    <form method='POST' action='/users/<%=user._id%>?_method=DELETE'> <input type='submit' value='Unsubscribe and delete your profile*'>
+    *Warning: this will delete your profile, all associated information and all memes associated with your username!
+    </form>
+<% } %>
 </main>
 <%- include('../partials/footer')%>
