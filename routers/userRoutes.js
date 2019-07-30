@@ -12,13 +12,23 @@ const isLogged = (req, res, next) => {
     }
 }
 
+const currentUserId = (req, res, next) => {
+    if (req.session.userId) {
+        res.locals.userId = req.session.userId;
+        next();
+    } else {
+        userId = '';
+        res.redirect('/');
+    }
+}
+
 router.get('/register', userController.register);
 router.post('/login',userController.login);
-router.get('/', isLogged, userController.index);
+router.get('/', isLogged, currentUserId, userController.index);
 router.post('/', userController.create);
-router.get('/:id', isLogged,userController.profile);
-router.get('/:id/edit', isLogged, userController.edit);
-router.put('/:id', isLogged, userController.update);
-router.delete('/:id', isLogged, userController.delete);
+router.get('/:id', isLogged, currentUserId, userController.profile);
+router.get('/:id/edit', isLogged, currentUserId, userController.edit);
+router.put('/:id', isLogged, currentUserId, userController.update);
+router.delete('/:id', isLogged, currentUserId, userController.delete);
 
 module.exports = router;

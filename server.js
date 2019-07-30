@@ -25,7 +25,8 @@ app.use('/memes', memeRoutes);
 app.get('/', (req, res) => {
     res.render('home.ejs', {
         message: req.session.message,
-        isLogged: req.session.logged
+        isLogged: req.session.logged,
+        userId: req.session.userId
     })
     console.log(req.session.logged)
 })

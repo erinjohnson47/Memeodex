@@ -16,5 +16,7 @@
             <a href='/' class='navbar'> Home </a>
             <a href='/memes' class='navbar'> Memes </a>
             <a href='/users' class='navbar'> Users </a>
-            <a href='/users' class='navbar'> Profile </a>
+            <%if (userId) {%>
+            <a href="/users/<%=userId%>" class='navbar'> Profile </a>
+            <%}%>
         </nav>
