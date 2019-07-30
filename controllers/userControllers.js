@@ -101,7 +101,7 @@ const userController = {
         }
     } else {
         req.session.message = 'You do not have permission to delete this profile.';
-        res.redirect('/');
+        res.redirect(`/users/${foundUser._id}`);
         }
     },
     update: async (req, res) => {
