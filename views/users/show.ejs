@@ -13,10 +13,17 @@ profileImg:<img src='<%=user.profileImg%>' alt='user profile photo'><br/>
 Your Memes:
     <section class='memes'>
         <% for(let i = 0; i < memes.length; i++){ %>
-            <div class='memes'>
-                <a href='/memes/<%=memes[i]._id%>'><img src="<%=memes[i].urlMeme%>" alt='<%=memes[i].title%>'/></a>
-            </div>
-        <% } %>
+                    <div>
+                        <% if(memes[i].isVideo){%>
+                            <div class="iframe-div">
+                            <iframe width="200" height="118" src="<%=memes[i].urlMeme%>" frameborder="0" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" allowfullscreen class='memeImg'></iframe>
+                            <a href="/memes/<%=memes[i]._id%>" class="iframe-link"></a>
+                            </div>
+                        <%} else {%>
+                            <a href="/memes/<%=memes[i]._id%>"><img src="<%=memes[i].urlMeme%>" class='memeImg'/></a>
+                        <%}%>
+                    </div>
+                <% } %>
     </section>
 
 <form method='POST' action='/users/<%=user._id%>?_method=DELETE'> <input type='submit' value='Unsubscribe and delete your profile*'>
