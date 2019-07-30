@@ -4,6 +4,7 @@ const userController = require('../controllers/userControllers');
 
 const isLogged = (req, res, next) => {
     if (req.session.logged) {
+        req.session.message  = '';
         next()
     } else {
         req.session.message = 'Please login to access this page.';
