@@ -138,7 +138,8 @@ const userController = {
                 console.log(req.session, "this is the session")
                 res.render('users/show.ejs', {
                     user: foundUser,
-                    memes: foundMemes
+                    memes: foundMemes,
+                    userId: req.session.userId,
                 });
             } catch (err) {
                 console.log(err);
