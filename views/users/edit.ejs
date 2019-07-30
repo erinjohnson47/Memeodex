@@ -7,8 +7,8 @@
 <form action='/users/<%=user._id%>?_method=PUT' method=POST>
 Enter your name: <input type="text" name="name" placeholder='name' value='<%=user.name%>'><br/>
 Choose a username:<input type="text" name="username" placeholder='username' value='<%=user.username%>'><br/>
-Create a password: <input type="password" name='password' placeholder='password' required><br/> 
-Please re-type your password:<input type="password" name='password-confirm' placeholder='confirm your password' required><br/> 
+Create a password: <input type="password" name='password' placeholder='password'><br/> 
+Please re-type your password:<input type="password" name='password-confirm' placeholder='confirm your password'><br/> 
 Enter your email: <input type="email" name="email" placeholder='email address' value='<%=user.email%>' required><br/>
 Date of birth:<input type='date' name='dob' required value='<%=user.dob%>'><br/>
 profileImg:<input type='text' name='profileImg' value='<%=user.profileImg%>'><br/>

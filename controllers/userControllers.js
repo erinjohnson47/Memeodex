@@ -107,9 +107,16 @@ const userController = {
         const findUser = await User.findOne({_id:req.params.id});
             if (findUser._id.toString() === req.session.userId.toString()){
                 try {
+                    if (!req.body.password) {
+                        delete req.body.password
+                    } else {
+                        const password = req.body.password;
+                        const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+                        req.body.password = hashedPassword;
+                        console.log(hashedPassword, '<-hashedPassword in update/put route')
+                    }
                     const updateUser = await User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true});
                     console.log(req.params.id, '<-req.params.id')
-                    
                     console.log(updateUser, '<-updateUser in update route');
                     res.redirect(`/users/${updateUser._id}`)
                 } catch (err) {
