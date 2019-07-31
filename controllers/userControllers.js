@@ -17,6 +17,7 @@ const userController = {
     register: (req, res) => {
         res.render('users/register.ejs', {
             message: req.session.message,
+            image: req.session.image
         })
     },
     create: async (req, res) => {
@@ -24,9 +25,11 @@ const userController = {
         const foundEmail = await User.findOne({email: req.body.email});
             if (foundUsername) {
                 req.session.message = 'The username you selected is already in use, please select another.'
+                req.session.image = 'https://i.kym-cdn.com/entries/icons/original/000/014/285/sideeyechloe.jpg'
                 res.redirect('users/register')
             } else if (foundEmail) {
                 req.session.message = 'There is already an account registered with that email address.';
+                req.session.image = 'https://i.kym-cdn.com/entries/icons/original/000/014/285/sideeyechloe.jpg'
                 res.redirect('users/register')
             } else {
                 const password = req.body.password;
