@@ -4,10 +4,12 @@
 <h1>Hi, <%=user.username%></h1>
 </header>
 <main>
-Name: <%=user.name%><br/>
 Username:<%=user.username%><br/>
-Email:<%=user.email%><br/>
-Date of birth:<%=user.dob%><br/>
+ <% if (userId === user._id.toString()) { %>
+    Name: <%=user.name%><br/>
+    Email:<%=user.email%><br/>
+    Date of birth:<%=user.dob%><br/>
+    <%}%>
 profileImg:<img src='<%=user.profileImg%>' alt='user profile photo'><br/>
 <a href='/memes/new'>click here to add a meme</a><br/>
 Your Memes:
