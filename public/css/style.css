@@ -5,9 +5,13 @@
     font-style: normal;
 }
 
+span {
+    color: red;
+    font-weight: bold;
+}
 
 body {
-    background-color: aquamarine;
+    background-color: rgb(148, 252, 247);
 }
 
 main {
