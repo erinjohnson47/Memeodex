@@ -8,7 +8,8 @@ const memeController = {
         try {
             const allMeme = await Meme.find({})
             res.render('memes/index.ejs', {
-                memes: allMeme
+                memes: allMeme,
+                isLogged: req.session.logged,
             })
 
         } catch(err) {
@@ -17,7 +18,9 @@ const memeController = {
     },
     new: async (req, res) => {
         try {
-            res.render('memes/new.ejs')
+            res.render('memes/new.ejs', {
+                isLogged: req.session.logged,
+            })
         } catch(err) {
             res.send(err)
         }
@@ -55,6 +58,7 @@ const memeController = {
             res.render('memes/show.ejs', {
                 meme: foundMeme,
                 user: foundUser,
+                isLogged: req.session.logged,
             })
         } catch(err){
             res.send(err)
@@ -65,6 +69,7 @@ const memeController = {
                 const foundMeme = await Meme.findById(req.params.id)
                 res.render('memes/edit.ejs', {
                     meme: foundMeme,
+                    isLogged: req.session.logged,
             });
             } catch(err) {
                 res.send(err)

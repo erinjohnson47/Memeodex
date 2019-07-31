@@ -12,9 +12,13 @@ span {
 
 body {
     background-color: rgb(148, 252, 247);
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 main {
+    flex: 1 0 auto;
     height: 100%;
 }
 

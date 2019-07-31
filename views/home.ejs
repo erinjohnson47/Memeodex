@@ -1,28 +1,8 @@
 <%- include('partials/header', {title: 'Memodex Home Page'})%>
-<% if(isLogged) {%>
-    <%-include('partials/logout')%>
-<%}%>
-<%- include('partials/register')%>
 <section>
  <span><%=message%></span><br/>
-<% if(!isLogged) {%>
-    <button id="myBtn">Login</button>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <br/>
-            <div> Login to your Memeodex</div>
-            <br/>
-            <form action="/users/login" method="POST">
-            <input type='text' name="username" placeholder='username'><br/>
-            <br/>
-            <input type='password' name="password" placeholder='password'><br/>
-            <br/>
-            <input type="submit" value="login"/>
-            </form>
-        </div>
+        
     </div>
-<%}%>
 </section>
 <section>
     <h3>What even IS this???</h3>

@@ -8,7 +8,9 @@ const userController = {
         try {
             const foundUsers = await User.find({});
             res.render('users/index.ejs', {
-                users: foundUsers
+                users: foundUsers,
+                isLogged: req.session.logged,
+                userId: req.session.userId,
             })
         } catch (err) {
             res.send(err);
@@ -17,7 +19,9 @@ const userController = {
     register: (req, res) => {
         res.render('users/register.ejs', {
             message: req.session.message,
-            image: req.session.image
+            image: req.session.image,
+            isLogged: req.session.logged,
+            userId: req.session.userId,
         })
     },
     create: async (req, res) => {
@@ -79,7 +83,8 @@ const userController = {
                 const [foundUser, foundMemes] = await Promise.all([findUser,findMemes]);
                 res.render('users/edit.ejs', {
                     user: foundUser,
-                    memes: foundMemes
+                    memes: foundMemes,
+                    isLogged: req.session.logged,
                 });
             } catch (err) {
                 res.send(err);
@@ -138,6 +143,7 @@ const userController = {
                 res.render('users/show.ejs', {
                     user: foundUser,
                     memes: foundMemes,
+                    isLogged: req.session.logged,
                     userId: req.session.userId,
                 });
             } catch (err) {
