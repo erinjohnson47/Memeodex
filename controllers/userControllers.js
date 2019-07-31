@@ -49,25 +49,31 @@ const userController = {
             }
     },
     login: async (req, res) => {
-        try {
-            const foundUser = await User.findOne({username: req.body.username});
-            if(foundUser.username.toLowerCase()) {
-                if(bcrypt.compareSync(req.body.password, foundUser.password)) {
-                    req.session.userId = foundUser._id;
-                    req.session.username = foundUser.username;
-                    req.session.logged = true; 
-                    res.redirect(`/users/${foundUser._id}`); 
-                } else {
+            try {
+                const foundUser = await User.findOne({username: req.body.username});
+                if(foundUser.username) {
+                    if (bcrypt.compareSync(req.body.password, foundUser.password)) {
+                        console.log('password check success')
+                        req.session.userId = foundUser._id;
+                        req.session.username = foundUser.username;
+                        req.session.logged = true; 
+                        res.redirect(`/users/${foundUser._id}`); 
+                    } else {
+                        console.log('password check err')
+                        req.session.message = 'Username or Password is incorrect';
+                        res.redirect('/');
+                    } 
+                } else { 
                     req.session.message = 'Username or Password is incorrect';
+                    console.log('this route is the else statement for username check')
+                    console.log(err)
                     res.redirect('/');
-                } 
-            } else { 
-                req.session.message = 'Username or Password is incorrect';
-                res.redirect('/');
-            }
-        } catch (err) {
-            res.send(err)
-        }
+                }
+            } catch (err) {
+                console.log('login catch err')
+                console.log(err)
+                res.send(err)
+            } 
     },
     edit: async (req, res) => {
         const findUser = await User.findOne({_id:req.params.id});
