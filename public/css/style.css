@@ -52,10 +52,28 @@ nav {
     text-decoration: none;
 }
 
+ul {
+    list-style: none;
+}
+
+li {
+    list-style: none;
+    display: block;
+}
+
 .memeImg {
     height: 200px;
     width: auto;
-    
+}
+
+.meme-img-container {
+    text-align: center;
+    margin: 5px;
+}
+
+.all-meme-container {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .iframe-div {

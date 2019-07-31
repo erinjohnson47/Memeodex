@@ -22,7 +22,7 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <br/>
-            <div> Are you sure you want to delet your Meme?</div>
+            <div> Are you sure you want to delete your Meme?</div>
             <br/>
             <form action="/memes/<%=meme._id%>?_method=DELETE" method="post">
                 <input type="submit" value="Delete Meme"/>
@@ -33,29 +33,5 @@
         <a href="/memes/<%=meme._id%>/edit">Edit</a>
     </section>
     </main>
-
-
-    <script>
-    var modal = document.getElementById("myModal");
-
-    var btn = document.getElementById("myBtn");
-
-    var span = document.getElementsByClassName("close")[0];
-
-    btn.onclick = function() {
-    modal.style.display = "block";
-    }
-
-    span.onclick = function() {
-    modal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-    }
-    </script>
-
 
 <%- include('../partials/footer')%>

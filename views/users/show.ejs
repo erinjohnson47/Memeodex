@@ -11,9 +11,9 @@ Date of birth:<%=user.dob%><br/>
 profileImg:<img src='<%=user.profileImg%>' alt='user profile photo'><br/>
 <a href='/memes/new'>click here to add a meme</a><br/>
 Your Memes:
-    <section class='memes'>
+    <section class="all-meme-container">
         <% for(let i = 0; i < memes.length; i++){ %>
-                    <div>
+                    <div class="meme-img-container">
                         <% if(memes[i].isVideo){%>
                             <div class="iframe-div">
                             <iframe width="200" height="118" src="<%=memes[i].urlMeme%>" frameborder="0" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" allowfullscreen class='memeImg'></iframe>
@@ -44,26 +44,4 @@ Your Memes:
     </section>
 <% } %>
 </main>
-
-<script>
-var modal = document.getElementById("myModal");
-
-var btn = document.getElementById("myBtn");
-
-var span = document.getElementsByClassName("close")[0];
-
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
 <%- include('../partials/footer')%>
