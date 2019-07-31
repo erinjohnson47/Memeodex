@@ -23,16 +23,18 @@ const memeController = {
         }
     },
     create: async (req, res) => {
-        console.log(req.body)
+        if (req.body.tag.includes(',')) { 
+            req.body.tag = req.body.tag.split(',') 
+        }
+        if(req.body.isVideo === 'on') {
+            req.body.isVideo = true;
+            if (req.body.urlMeme.includes('watch?v=')){
+            req.body.urlMeme = req.body.urlMeme.split('watch?v=').join('embed/')
+            } else if (req.body.urlMeme.includes('youtu.be')) {
+                req.body.urlMeme = req.body.urlMeme.split('youtu.be').join('www.youtube.com/embed');
+            }
+        } 
         try {
-            if (req.body.tag.includes(',')) { 
-                req.body.tag = req.body.tag.split(',') 
-            }
-            if(req.body.isVideo === 'on') {
-                req.body.isVideo = true;
-                req.body.urlMeme = req.body.urlMeme.split('watch?v=').join('embed/')
-            }
-            console.log(req.body, "<-----req.body here")
             const createMeme = await Meme.create(req.body);
             const user = await User.findById(req.session.userId);
             createMeme.user = user.id;

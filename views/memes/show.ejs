@@ -8,7 +8,7 @@
                     <div>Meme Description: <%=meme.description%></div>
                     <div>Posted By: <%=user.username%></div><br/>
                     <div>
-                        <% if(meme.isVideo){%>
+                        <% if(meme.isVideo){%><%=message%>
                             <iframe width="200" height="118" src="<%=meme.urlMeme%>" frameborder="0" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" allowfullscreen class='memeImg'></iframe>
                         <%} else {%>
                         <img src="<%=meme.urlMeme%>" class='memeImg'/>
