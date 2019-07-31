@@ -11,7 +11,7 @@ Date of birth:<%=user.dob%><br/>
 profileImg:<img src='<%=user.profileImg%>' alt='user profile photo'><br/>
 <a href='/memes/new'>click here to add a meme</a><br/>
 Your Memes:
-    <section class='all-meme-container'>
+    <section class="all-meme-container">
         <% for(let i = 0; i < memes.length; i++){ %>
                     <div class="meme-img-container">
                         <% if(memes[i].isVideo){%>
