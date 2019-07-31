@@ -95,6 +95,7 @@ const userController = {
                 const deleteUser = await User.findOneAndRemove({_id:req.params.id});
                 const deleteMemes = await Meme.remove({user: req.params.id})
                 const [deletedUser, deletedMemes] = await Promise.all([deleteUser, deleteMemes]);
+                req.session.destroy();                
                 res.redirect('/');
             } catch (err) {
                 res.send(err);
