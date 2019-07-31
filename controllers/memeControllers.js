@@ -69,7 +69,6 @@ const memeController = {
             }
     },
     update: async (req, res) => {
-        console.log(req.body, '<-req.body',req.body.isVideo, '<-req.body.isVideo', req.body.urlMeme, '<-req.body.urlMeme', req.body.tag, '<-req.body.tag')
         if(req.body.isVideo && req.body.isVideo=== 'on') {
             req.body.isVideo = true;
             req.body.urlMeme = req.body.urlMeme.split('watch?v=').join('embed/')
