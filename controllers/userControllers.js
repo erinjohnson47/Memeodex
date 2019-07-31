@@ -51,26 +51,21 @@ const userController = {
     login: async (req, res) => {
             try {
                 const foundUser = await User.findOne({username: req.body.username});
-                console.log(foundUser, '<--foundUser at login route');
                 if(foundUser) {
                     if (bcrypt.compareSync(req.body.password, foundUser.password)) {
-                        console.log('password check success')
                         req.session.userId = foundUser._id;
                         req.session.username = foundUser.username;
                         req.session.logged = true; 
                         res.redirect(`/users/${foundUser._id}`); 
                     } else {
-                        console.log('password check err')
-                        req.session.message = 'Username or Password is incorrect';
+                        req.session.message = 'Username or Password is incorrect.';
                         res.redirect('/');
                     } 
                 } else { 
-                    req.session.message = 'Username or Password is incorrect';
-                    console.log('this route is the else statement for username check')
+                    req.session.message = 'Username or Password is incorrect.';
                     res.redirect('/');
                 }
             } catch (err) {
-                console.log('login catch err')
                 console.log(err)
                 res.send(err)
             } 
