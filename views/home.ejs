@@ -1,21 +1,11 @@
 <%- include('partials/header', {title: 'Memodex Home Page'})%>
 <section>
  <span><%=message%></span><br/>
-        
-    </div>
-</section>
-<section>
-    <h3>What even IS this???</h3>
-    <h2>A Virtual Rolodex of All of Your Favorite Memes!</h2>
-        <h3>Why do you need this?</h3>
-            Your BFF texts something funny and you want to respond with your favorite gif or a screenshot you took of a relateable meme that totally applies to their hilarious joke. But, you have 5,467 images in your phone, where IS that screenshot you took of that one meme? You can totally picture it, but by the time you've scrolled through 3 months of photos in your phone, the moment has passed. You now seem 11% less funny than you actually are!<br/>
-            <img src='https://camo.githubusercontent.com/f446ece5abe759d0b69fa1220bc47915956c1341/68747470733a2f2f692e6b796d2d63646e2e636f6d2f70686f746f732f696d616765732f6e657773666565642f3030302f3238342f3532392f6536352e676966' alt='sweet brown aint nobody got time for that'>
-    <h2>Memeodex can restore you to your naturally funny, quick-witted self!</h2>
-        Memeodex is a personal database curated by you, for you, to store links to your favorite memes - be it gifs, images, videos - if it lives on the internet, it can live in your database too! Any time you come across a meme you want to reference later, you store it in your database and behold you have a quick reference to that funny meme at the tip of your fingertips! Sure, there are other meme websites out there, but they are allll the memes, not just the GOOD ones. Here, you get to organize your collection, just how you like it!<br/> 
-        <img src='https://camo.githubusercontent.com/1847c0ae68b38cc9985256e3b8734010372921a9/68747470733a2f2f6d65646961312e74656e6f722e636f6d2f696d616765732f64346530633033396564306432623331616632393666373361626564373137342f74656e6f722e6769663f6974656d69643d35303834313035' alt='carlton dance'>
+<h5>A Virtual Rolodex of All of Your Favorite Memes!</h5>
+<h6><a href='/about'>click here to learn about Memeodex!</a></h6>
 </section>
 <section class='container'>
-<h2>Check out our users' favorites!</h2>
+<h2>Check out our users' favorite memes!</h2>
     <div class="all-meme-container">
     <% for(let i = 0; i < memes.length; i++){ %>
         <div class="meme-img-container">
