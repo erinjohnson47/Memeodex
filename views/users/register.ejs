@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script defer src="/js/script.js"></script>
     <link rel='stylesheet' type='text/css' href='/css/style.css'>
     <title>Memeodex Registration</title>
 </head>
@@ -22,9 +23,9 @@
 <span><img src='<%=image%>' width=400px height=auto/><br><%=message%></span>
 <form action='/users' method='POST'>
 Enter your name: <input type="text" name="name" placeholder='name'><br/>
-Choose a username:<input id='username' type="text" name="username" placeholder='username'><br/>
-Create a password: <input type="password" name='password' placeholder='password' required><br/> 
-Please re-type your password:<input type="password" name='password-confirm' placeholder='confirm your password' required><br/> 
+Choose a username:<input id='username' pattern='.{3,}' title='username must be at least 3 characters long' type="text" name="username" placeholder='username'><br/>
+Create a password: <input type="password" id='password' pattern='.{6,}' title='password must be at least 6 characters in length' name='password' placeholder='password' required><br/> 
+Please re-type your password:<input id='password-confirm' type="password" name='password-confirm' placeholder='confirm your password' required><br/> 
 Enter your email: <input id='email' type="email" name="email" placeholder='email address' required><br/>
 Date of birth:<input type='date' name='dob' required>
 profileImg:<input type='text' name='profileImg'><br/>
