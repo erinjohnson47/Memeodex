@@ -5,6 +5,7 @@ const app = express();
 const logger = require('morgan');
 const userRoutes = require('./routers/userRoutes')
 const memeRoutes = require('./routers/memeRoutes')
+const Meme = require('./models/Meme')
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -22,12 +23,15 @@ require('./db/db');
 app.use('/users', userRoutes);
 app.use('/memes', memeRoutes);
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+    const findMemes = await Meme.find({});
     res.render('home.ejs', {
         message: req.session.message,
         isLogged: req.session.logged,
-        userId: req.session.userId
+        userId: req.session.userId,
+        memes: findMemes
     })
+    console.log(findMemes, '<-findMemes in home route')
     console.log(req.session.logged)
 })
 
