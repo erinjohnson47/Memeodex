@@ -10,7 +10,7 @@ const memeSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    hashtag: [String]
+    tag: [String]
 })
 
 const Meme = mongoose.model('Meme', memeSchema);

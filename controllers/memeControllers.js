@@ -25,6 +25,9 @@ const memeController = {
     create: async (req, res) => {
         console.log(req.body)
         try {
+            if (req.body.tag.includes(',')) { 
+                req.body.tag = req.body.tag.split(',') 
+            }
             if(req.body.isVideo === 'on') {
                 req.body.isVideo = true;
                 req.body.urlMeme = req.body.urlMeme.split('watch?v=').join('embed/')
@@ -35,7 +38,6 @@ const memeController = {
             createMeme.user = user.id;
             createMeme.save();
             console.log(createMeme.user, '<-createMeme.user in create meme', req.body, '<-req.body in create route')
-        // req.body.username = req.session.username
             res.redirect(`/users/${user.id}`)
         } catch(err) {
             console.log(err)
@@ -50,27 +52,42 @@ const memeController = {
             console.log(foundMeme, '<-foundMeme in show route')
             res.render('memes/show.ejs', {
                 meme: foundMeme,
-                user: foundUser
+                user: foundUser,
             })
         } catch(err){
             res.send(err)
         }
     },
     edit: async (req, res) => {
-        try {
-            const foundMeme = await Meme.findById(req.params.id)
-            res.render('memes/edit.ejs', {
-                meme: foundMeme
-        });
-        } catch(err) {
-            res.send(err)
-        }
+        // const checkUser = await Meme.findById({_id: req.params.id});
+        // console.log(checkUser.user, '<checkUser.user', req.session.userId, '<-req.session.userId')
+        // if(checkUser.user.toString() === req.session.userId.toString()){
+            try {
+                const foundMeme = await Meme.findById(req.params.id)
+                res.render('memes/edit.ejs', {
+                    meme: foundMeme,
+            });
+            } catch(err) {
+                res.send(err)
+            }
+        // } else {
+        //     req.session.message = 'Sorry, you do not have permission to edit this meme.';
+        //     res.redirect(`/memes/${updateMeme._id}`);
+        // }
     },
     update: async (req, res) => {
+        console.log(req.body, '<-req.body',req.body.isVideo, '<-req.body.isVideo', req.body.urlMeme, '<-req.body.urlMeme', req.body.tag, '<-req.body.tag')
+        if(req.body.isVideo === 'on') {
+            req.body.isVideo = true;
+            req.body.urlMeme = req.body.urlMeme.split('watch?v=').join('embed/')
+        }
+        if (req.body.tag.includes(',')) { 
+            req.body.tag = req.body.tag.split(',') 
+        }
         try {
-            const foundMeme = await Meme.findById(req.params.id)
-            res.render('memes/edit.ejs', {
-                meme: foundMeme
+            const updateMeme = await Meme.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true})
+            res.redirect(`memes/${updateMeme}`, {
+                meme: updateMeme
         });
         } catch(err) {
             res.send(err)

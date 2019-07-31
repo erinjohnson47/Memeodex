@@ -1,4 +1,17 @@
 <%- include('../partials/header', {title: 'Memodex Meme Index'})%>
 <%- include('../partials/logout')%>
-<h1> Hi </h1>
+<h1> Edit your <%=meme.title%></h1>
+<form action='/memes/<%=meme._id%>?_method=PUT' method=POST>
+        Meme Title
+        <input type="text" name="title" value='<%=meme.title%>' required/><br/>
+        Meme Description
+        <textarea name="description"></textarea><br/>
+        Meme URL*
+        <input type="text" name="urlMeme" value='<%=meme.urlMeme%>'required/><br/>
+        *Check this box if this links to a video
+        <input type="checkbox" name="isVideo" <%if (meme.isVideo === true){ %> checked <%}%>/><br/>  
+        Meme Tags (use ',' to separate multiple tags)
+        <input type="text" name="title"/><br/>      
+        <input type="submit" value="Publish Meme"/>
+        </form>
 <%- include('../partials/footer')%>
