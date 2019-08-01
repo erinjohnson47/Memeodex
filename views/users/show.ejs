@@ -1,9 +1,9 @@
 <%- include('../partials/header', {title: 'Memodex: User Profile'})%>
 <header>
 <%if (userId === user._id.toString()) { %>
-<h1>Hi, <%=user.name%></h1>
+<h4>Hi, <%=user.name%></h4>
 <%} else {%>
-<h1>Profile for <%=user.name%></h1>
+<h4>Profile for <%=user.name%></h4>
 <%}%>
 </header>
 <main>

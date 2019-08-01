@@ -40,6 +40,7 @@ app.get('/about', (req, res) => {
         isLogged: req.session.logged,
         userId: req.session.userId,
     })
+    console.log(req.session.message)
 })
 
 app.get('/logout', (req, res) => {

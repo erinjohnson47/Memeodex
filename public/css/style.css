@@ -49,6 +49,8 @@ li {
 .memeImg {
     height: 155px;
     width: auto;
+    border-radius: 2.5px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 .meme-img-container {
@@ -116,8 +118,8 @@ input {
 }
 
 .modal-stuff {
-    border-radius: 25px;
-    border: 2px solid black;
+    border-radius: 2.5px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     text-align: center;
     background-color: #fefefe;
     margin: 15% auto;
