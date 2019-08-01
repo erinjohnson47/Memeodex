@@ -1,19 +1,24 @@
 <%- include('../partials/header', {title: 'Memodex Meme Index'})%>
     <main>
         <section>
-            <h2>Meme Details:</h2>
-                <ul>
-                    <li>Meme Title: <%=meme.title%></li><br/>
-                    <div>Meme Description: <%=meme.description%></div>
-                    <div>Posted By: <a href='/users/<%=user._id%>'> <%=user.username%></a></div><br/>
-                    <div>
-                        <% if(meme.isVideo){%>
-                            <iframe width="200" height="118" src="<%=meme.urlMeme%>" frameborder="0" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" allowfullscreen class='memeImg'></iframe>
-                        <%} else {%>
-                        <img src="<%=meme.urlMeme%>" class='memeImg'/>
-                        <%}%>
-                    </div>
-                </ul>
+            <div>
+                <h5>Meme Title</h5>
+                <%=meme.title%><br/>
+                <h5>Meme Description</h5> <%=meme.description%><br/>
+                Posted By: <a href='/users/<%=user._id%>'> <%=user.username%></a>
+            </div><br/>
+            <div>
+                <% if(meme.isVideo){%>
+                    <iframe width="200" height="118" src="<%=meme.urlMeme%>" frameborder="0" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" allowfullscreen class='memeImg'></iframe>
+                <%} else {%>
+                <img src="<%=meme.urlMeme%>" class='memeImg'/>
+                <%}%>
+            </div>
+        </section>
+        <section>
+            <%if(meme.tag) { %>
+                tags: <%=meme.tag%>
+            <%}%>
         </section>
         <section>
         <% if (userId === user._id.toString()) { %>
@@ -32,11 +37,6 @@
             <a href="/memes/<%=meme._id%>/edit">Edit</a>
             </section>
         <%}%>
-        <section>
-            <%if(meme.tag) { %>
-                tags: <%=meme.tag%>
-            <%}%>
-        </section>
     </main>
 
 <%- include('../partials/footer')%>

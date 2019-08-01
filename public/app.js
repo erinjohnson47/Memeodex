@@ -5,6 +5,12 @@ const btn2 = document.getElementById("myBtn2");
 
 const span = document.getElementsByClassName("close")[0];
 
+const banner = document.getElementsByClassName('banner');
+
+const memeImgs = [];
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
   let elems = document.querySelectorAll('.sidenav');
   let instances = M.Sidenav.init(elems, {});
