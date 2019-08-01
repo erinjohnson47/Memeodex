@@ -141,3 +141,7 @@ input {
     text-decoration: none;
     cursor: pointer;
 }
+
+#hamburger-icon {
+    float: right;
+}
