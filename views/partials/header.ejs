@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script defer src="/app.js"></script>
+    <meta description='Memeodex is a personal database curated by you, for you, to store links to your favorite memes - be it gifs, images, videos - if it lives on the internet, it can live in your database too!'/>
     <title><%=title%></title>
 </head>
 <body>
@@ -32,7 +33,7 @@
             <div class="modal-stuff">
                 <span id="close">&times;</span>
                 <div class="modal-text">
-                    Login to my Memeodex
+                    Log in to Memeodex
                 </div>
                 <form action="/users/login" method="POST">
                     <input type='text' name="username" placeholder='username' class="login-modal"><br/>

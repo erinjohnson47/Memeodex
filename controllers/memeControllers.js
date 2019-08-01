@@ -42,19 +42,15 @@ const memeController = {
             const user = await User.findById(req.session.userId);
             createMeme.user = user.id;
             createMeme.save();
-            console.log(createMeme.user, '<-createMeme.user in create meme', req.body, '<-req.body in create route')
             res.redirect(`/users/${user.id}`)
         } catch(err) {
-            console.log(err)
             res.send(err)
         }
     },
     meme: async (req, res) => {
         try {
             const foundMeme = await Meme.findById(req.params.id).populate('user');
-            console.log(req.params.id, '<-req.params.id in show route')
             const foundUser = await User.findById(foundMeme.user);
-            console.log(foundMeme, '<-foundMeme in show route')
             res.render('memes/show.ejs', {
                 meme: foundMeme,
                 user: foundUser,
@@ -65,6 +61,8 @@ const memeController = {
         }
     },
     edit: async (req, res) => {
+        const findUser = await User.findOne({_id:req.params.id});
+        if (findUser._id.toString() === req.session.userId.toString()){
             try {
                 const foundMeme = await Meme.findById(req.params.id)
                 res.render('memes/edit.ejs', {
@@ -74,6 +72,10 @@ const memeController = {
             } catch(err) {
                 res.send(err)
             }
+        } else {
+            req.session.message = 'Sorry, you do not have permission to edit this meme.';
+            res.redirect(`/users/${findUser._id}`);
+        }
     },
     update: async (req, res) => {
         if(req.body.isVideo && req.body.isVideo=== 'on') {
@@ -91,12 +93,18 @@ const memeController = {
         }
     },
     delete: async(req,res) => {
-        try {
-          const foundMeme = await Meme.findByIdAndRemove(req.params.id);
-          res.redirect('/memes')
-        } catch(err) {
-          res.send(err)
-        }
+        const findUser = await User.findOne({_id:req.params.id});
+            if (findUser._id.toString() === req.session.userId.toString()){
+                try {
+                const foundMeme = await Meme.findByIdAndRemove(req.params.id);
+                res.redirect('/memes')
+                } catch(err) {
+                res.send(err)
+                }
+            } else {
+                req.session.message = 'Sorry, you do not have permission to delete this meme.';
+                res.redirect(`/users/${findUser._id}`);
+            }
     }
 }
 

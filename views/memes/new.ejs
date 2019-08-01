@@ -1,4 +1,4 @@
-<%- include('../partials/header', {title: 'Memodex Meme Index'})%>
+<%- include('../partials/header', {title: 'Memeodex: Create a Meme'})%>
 <header>
     <h4>Create a Meme</h4>
 </header>
@@ -8,14 +8,14 @@
             <input type="text" name="title" required/><br/>
             Meme Description
             <textarea name="description"></textarea><br/>
-            Meme URL*
+            Meme URL*^
             <input type="text" name="urlMeme" required/>
             <br/>
             <p>
                 <label>
                     <input type="checkbox" name='isVideo' />
                     <span>Check this box if this links to a video
-            <p>(Sorry, we can only embed youtube videos - see if your meme is available there!)</span>
+            <p>*(Sorry, we can only embed youtube videos - see if your meme is available there!)<br>^Sorry! We are currently unable to support links from tenor.com</span>
                 </label>
             </p>
             <br/>

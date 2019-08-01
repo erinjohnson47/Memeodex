@@ -41,11 +41,9 @@ const userController = {
                 req.body.password = hashedPassword;
                 try {
                     const createdUser = await User.create(req.body);
-                    console.log(createdUser, '<-createdUser');
                     req.session.userId = createdUser._id;
                     req.session.username = createdUser.username;
                     req.session.logged = true;
-                    console.log(createdUser._id, '<-createdUser._id')
                     res.redirect(`users/${createdUser._id}`)
                 } catch (err) {
                     res.send(err);
@@ -70,7 +68,6 @@ const userController = {
                     res.redirect('/');
                 }
             } catch (err) {
-                console.log(err)
                 res.send(err)
             } 
     },
@@ -135,11 +132,8 @@ const userController = {
     profile: async (req, res) => {
             try {
                 const findUser = await User.findOne({_id:req.params.id});
-                console.log(findUser, 'foundUser in show/profile route');
                 const findMemes = await Meme.find({user: req.params.id});
-                console.log(findMemes, '<-findMemes in profile route');
                 const [foundUser, foundMemes] = await Promise.all([findUser,findMemes]);
-                console.log(req.session, "this is the session")
                 res.render('users/show.ejs', {
                     user: foundUser,
                     memes: foundMemes,
@@ -147,7 +141,6 @@ const userController = {
                     userId: req.session.userId,
                 });
             } catch (err) {
-                console.log(err);
                 res.send(err);
             }
     }
