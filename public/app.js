@@ -3,7 +3,8 @@ const btn = document.getElementById("myBtn");
 const modal2 = document.getElementById("myModal2");
 const btn2 = document.getElementById("myBtn2");
 
-const span = document.getElementsByClassName("close")[0];
+const span = document.getElementById("close");
+const span2 = document.getElementById("close2");
 
 const banner = document.getElementsByClassName('banner');
 
@@ -25,7 +26,7 @@ btn2.onclick = function() {
 span.onclick = function() {
   modal.style.display = "none";
 }
-span.onclick = function() {
+span2.onclick = function() {
   modal2.style.display = "none";
 }
 
