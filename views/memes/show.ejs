@@ -22,14 +22,14 @@
         </section>
         <section>
         <% if (userId === user._id.toString()) { %>
-            <button id="myBtn">Delete Meme</button>
-            <div id="myModal" class="my-modal">
+            <button id="myBtn3">Delete Meme</button>
+            <div id="myModal3" class="my-modal">
             <div class="modal-stuff">
-                <span class="close">&times;</span>
+                <span id="close3">&times;</span>
                 <div class="modal-text"> Are you sure you want to delete your Meme?</div>
                 <br/>
                 <form action="/memes/<%=meme._id%>?_method=DELETE" method="post">
-                    <input type="submit" value="Delete Meme"/>
+                    <input type="submit" value="Delete Meme" class="login-modal"/>
                 </form>
             </div>
             </section>
