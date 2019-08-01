@@ -5,21 +5,13 @@
     font-style: normal;
 }
 
-span {
+.error-message {
     color: red;
     font-weight: bold;
 }
 
 body {
     background-color: rgb(148, 252, 247);
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-}
-
-main {
-    flex: 1 0 auto;
-    height: 100%;
 }
 
 nav .brand-logo {
@@ -30,6 +22,19 @@ nav .brand-logo {
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;
+    margin-left: 10px;
+    font-size: 3.1rem !important;
+}
+
+nav .right {
+    font-family: 'impact';
+    text-transform: uppercase;
+    text-shadow:
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+    margin-right: 10px;
 }
 
 ul {
@@ -42,7 +47,7 @@ li {
 }
 
 .memeImg {
-    height: 200px;
+    height: 155px;
     width: auto;
 }
 
@@ -76,6 +81,19 @@ footer {
     height:60px;
 }
 
+.container {
+    text-align: center;
+}
+
+input {
+    text-align: center;
+    width: 250px !important;
+}
+
+.login-modal {
+    width: 150px !important;
+}
+
 /* The Modal */
 .my-modal {
     display: none;
@@ -92,10 +110,14 @@ footer {
 
 .modal-text{
     color: black !important;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    text-transform: none;
+    text-shadow: none;
 }
 
 .modal-stuff {
     border-radius: 25px;
+    border: 2px solid black;
     text-align: center;
     background-color: #fefefe;
     margin: 15% auto;
@@ -108,6 +130,9 @@ footer {
     float: right;
     font-size: 20px;
     font-weight: bold;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    text-transform: none;
+    text-shadow: none;
 }
   
 .close:hover,
