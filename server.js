@@ -34,6 +34,13 @@ app.get('/', async (req, res) => {
     console.log(findMemes, '<-findMemes in home route')
     console.log(req.session.logged)
 })
+app.get('/about', (req, res) => {
+    res.render('about.ejs', {
+        message: req.session.message,
+        isLogged: req.session.logged,
+        userId: req.session.userId,
+    })
+})
 
 app.get('/logout', (req, res) => {
     req.session.destroy((err) => {
