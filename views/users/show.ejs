@@ -38,10 +38,10 @@ Memes saved by <%=user.name%>
     <section>
         <a href="/users/<%=user._id%>/edit">Edit your Profile</a>
     </section>
-    <button id="myBtn">Delete Profile</button>
-        <div id="myModal" class="my-modal">
+    <button id="myBtn4">Delete Profile</button>
+        <div id="myModal4" class="my-modal">
             <div class="modal-stuff">
-                <span class="close">&times;</span>
+                <span id="close4">&times;</span>
                 <div class="modal-text">Are you sure you want to delete your profile?</div>
                 <br/>
                 <form method='POST' action='/users/<%=user._id%>?_method=DELETE'> <input type='submit' value='Delete your profile' class="login-modal">
