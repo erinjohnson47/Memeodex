@@ -1,21 +1,24 @@
 <%- include('partials/header', {title: 'Memodex Home Page'})%>
 <section>
- <span><%=message%></span><br/>
-<h5>A Virtual Rolodex of All of Your Favorite Memes!</h5>
-<h6><a href='/about'>click here to learn about Memeodex!</a></h6>
+    <div class="error-message"><%=message%></div><br/>
+    <h4>A Virtual Rolodex of All of Your Favorite Memes!</h4>
+    <h5><a href='/about'>click here to learn about Memeodex!</a></h5>
 </section>
-<section class='container'>
-<h2>Check out our users' favorite memes!</h2>
-    <div class="all-meme-container">
-    <% for(let i = 0; i < memes.length; i++){ %>
-        <div class="meme-img-container">
-            <% if(memes[i].isVideo){%>
-                <iframe width="200" height="118" src="<%=memes[i].urlMeme%>" frameborder="0" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" allowfullscreen class='memeImg' href="/memes/<%=memes[i]._id%>"></iframe>
-            <%} else {%>
-                <img src="<%=memes[i].urlMeme%>" class='memeImg' href="/memes/<%=memes[i]._id%>"/>
+<section>
+    <h4>Check out our users' favorite memes!</h4>
+        <div class="all-meme-container">
+        <% for(let i = 0; i < memes.length; i++){ %>
+            <div class="meme-img-container">
+                <% if(memes[i].isVideo){%>
+                    <div class="iframe-div">
+                    <iframe width="200" height="118" src="<%=memes[i].urlMeme%>" frameborder="0" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" allowfullscreen class='memeImg'></iframe>
+                    <a href="/memes/<%=memes[i]._id%>" class="iframe-link"></a>
+                    </div>
+                <%} else {%>
+                <a href="/memes/<%=memes[i]._id%>"><img src="<%=memes[i].urlMeme%>" class='memeImg'/></a>
+                <%}%>
+            </div>
             <%}%>
         </div>
-        <%}%>
-    </div>
 </section>
 <%- include('partials/footer')%>

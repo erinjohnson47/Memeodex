@@ -14,30 +14,25 @@
 <header>
 <nav>
   <div class="nav-wrapper">
-    <a href="/" class="brand-logo">Memeodex</a>
-    <ul class="right hide-on-med-and-down">
+    <a href="/" class="brand-logo left">Memeodex</a>
+    <ul class="right">
         <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
         <li><a href="/memes">Memes</a></li>
         <li><a href="/users">Users</a></li>
         <%if (userId) {%>
         <li><a href="/users/<%=userId%>">Profile</a></li>
         <%}%>
         <%if(!isLogged) {%>
-            <li><a href="/users/register">Register</a></li>
-            <li id="myBtn">Login</li>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
+        <li><a href="/users/register">Register</a></li>
+        <li><a id='myBtn'>Login</a></li>
+            <div id="myModal" class="my-modal">
+            <div class="modal-stuff">
             <span class="close">&times;</span>
-            <br/>
-            <div> Login to your Memeodex</div>
-            <br/>
+            <div class="modal-text">Login to my Memeodex</div>
             <form action="/users/login" method="POST">
-            <input type='text' name="username" placeholder='username'><br/>
-            <br/>
-            <input type='password' name="password" placeholder='password'><br/>
-            <br/>
-            <input type="submit" value="login"/>
+            <input type='text' name="username" placeholder='username' class="login-modal"><br/>
+            <input type='password' name="password" placeholder='password' class="login-modal"><br/>
+            <input type="submit" value="login" class="login-modal"/>
             </form>
         </div>
     </div>
@@ -46,9 +41,9 @@
             <li><a href="/logout">Logout</a></li>
         <%}%>
     </ul>
-  </div>
-            
+  </div>         
 </nav>
 </header>
 <main>
+<div class='container'
 

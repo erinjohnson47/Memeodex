@@ -4,22 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script defer src="/js/script.js"></script>
     <link rel='stylesheet' type='text/css' href='/css/style.css'>
-    <title>Memeodex Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script defer src="/app.js"></script>
+    <title>Register</title>
 </head>
 <body>
-    <main>
-    <div class='siteName'>
-        <img src='../../images/TrollFace.gif' class='logoImg'> Memeodex
-    </div>
-        <nav>
-            <a href='/' class='navbar'> Home </a>
-        </nav>
 <header>
-    <h1>REGISTER to use Memeodex</h1>
+<nav>
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo left">Memeodex</a>
+    <ul class="right">
+        <li><a href="/">Home</a></li>
+        <%if (userId) {%>
+        <li><a href="/users/<%=userId%>">Profile</a></li>
+        <%}%>
+        <%if(!isLogged) {%>
+        <li><a href="/users/register">Register</a></li>
+        <li><a id='myBtn'>Login</a></li>
+            <div id="myModal" class="my-modal">
+            <div class="modal-stuff">
+            <span class="close">&times;</span>
+            <div class="modal-text">Login to my Memeodex</div>
+            <form action="/users/login" method="POST">
+            <input type='text' name="username" placeholder='username'><br/>
+            <input type='password' name="password" placeholder='password'><br/>
+            <input type="submit" value="login"/>
+            </form>
+        </div>
+    </div>
+        <%}%>
+        <%if(isLogged){%>
+            <li><a href="/logout">Logout</a></li>
+        <%}%>
+    </ul>
+  </div>         
+</nav>
 </header>
 <main>
+<div class='container'
 <span><img src='<%=image%>' width=400px height=auto/><br><%=message%></span>
 <form action='/users' method='POST'>
 Enter your name: <input type="text" name="name" placeholder='name'><br/>

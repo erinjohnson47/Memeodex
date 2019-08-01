@@ -8,21 +8,28 @@
     <div class="all-meme-container">
         <% for(let i = 0; i < memes.length; i++){ %>
                 <div class='meme-img-container'>
+                    <div>
+                        <% if(memes[i].isVideo){%>
+                            <div class="iframe-div">
+                            <iframe width="200" height="118" src="<%=memes[i].urlMeme%>" frameborder="0" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" allowfullscreen class='memeImg'></iframe>
+                            <a href="/memes/<%=memes[i]._id%>" class="iframe-link"></a>
+                            </div>
+                        <%} else {%>
+                        <a href="/memes/<%=memes[i]._id%>"><img src="<%=memes[i].urlMeme%>" class='memeImg'/></a>
+                        <%}%>
+                    </div>
                     <li>
                         <a href="/memes/<%=memes[i]._id%>"><%=memes[i].title%></a>
                     </li>
                     <div>
-                        <% if(memes[i].isVideo){%>
-                            <iframe width="200" height="118" src="<%=memes[i].urlMeme%>" frameborder="0" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" allowfullscreen class='memeImg'></iframe>
-                        <%} else {%>
-                        <img src="<%=memes[i].urlMeme%>" class='memeImg'/>
-                        <%}%>
-                    </div>
-                    <div>
                         Description: <%=memes[i].description%>
                     </div>
+                    <li>
+                        <% if(memes[i].tag){%>
+                            Tags: <%=memes[i].tag%>
+                        <%}%>
+                    </li>
                 </div>
                 <% } %>
     </div>
 <%- include('../partials/footer')%>
-
