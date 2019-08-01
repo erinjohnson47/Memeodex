@@ -10,7 +10,10 @@
     <% for(let i = 0; i < memes.length; i++){ %>
         <div class="meme-img-container">
             <% if(memes[i].isVideo){%>
-                <iframe width="200" height="118" src="<%=memes[i].urlMeme%>" frameborder="0" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" allowfullscreen class='memeImg' href="/memes/<%=memes[i]._id%>"></iframe>
+                <div class="iframe-div">
+                <iframe width="200" height="118" src="<%=memes[i].urlMeme%>" frameborder="0" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" allowfullscreen class='memeImg'></iframe>
+                <a href="/memes/<%=memes[i]._id%>" class="iframe-link"></a>
+                </div>
             <%} else {%>
                 <img src="<%=memes[i].urlMeme%>" class='memeImg' href="/memes/<%=memes[i]._id%>"/>
             <%}%>
