@@ -12,8 +12,7 @@ const checkPassword = () => {
         console.log(password.value, '<-password', confirm_password.value, '<-confirm password')
     }
 }
-// password.addEventListener("focusout", checkPassword, true);
 confirm_password.addEventListener("focusout", checkPassword, true);
 
-// password.onchange = validatePassword;
-// confirm_password.onkeyup = validatePassword;
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;

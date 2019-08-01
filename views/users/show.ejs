@@ -1,17 +1,25 @@
 <%- include('../partials/header', {title: 'Memodex: User Profile'})%>
 <header>
-<h1>Hi, <%=user.username%></h1>
+<%if (userId === user._id.toString()) { %>
+<h1>Hi, <%=user.name%></h1>
+<%} else {%>
+<h1>Profile for <%=user.name%></h1>
+<%}%>
 </header>
 <main>
-Username:<%=user.username%><br/>
+<br/>
  <% if (userId === user._id.toString()) { %>
     Name: <%=user.name%><br/>
-    Email:<%=user.email%><br/>
-    Date of birth:<%=user.dob%><br/>
+    Username: <%=user.username%><br/>
+    Email: <%=user.email%><br/>
+    Date of birth: <%=user.dob%><br/>
     <%}%>
-profileImg:<img src='<%=user.profileImg%>' alt='user profile photo'><br/>
+<% if (userId === user._id.toString()) { %>
 <a href='/memes/new'>click here to add a meme</a><br/>
 Your Memes:
+<%} else {%>
+Memes saved by <%=user.name%>
+<%}%>
     <section class="all-meme-container">
         <% for(let i = 0; i < memes.length; i++){ %>
                     <div class="meme-img-container">
@@ -26,8 +34,11 @@ Your Memes:
                     </div>
                 <% } %>
     </section>
-<% if (userId === user._id.toString()) { %>
-    <button id="myBtn">Delete Profile and All Memes Associated</button>
+    <% if (userId === user._id.toString()) { %>
+    <section>
+        <a href="/users/<%=user._id%>/edit">Edit your Profile</a>
+    </section>
+    <button id="myBtn">Delete Profile and All Memes Associated with this Profile</button>
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
@@ -40,9 +51,6 @@ Your Memes:
                 *Warning: this will delete your profile, all associated information and all memes associated with your username!
             </div>
         </div>
-    <section>
-        <a href="/users/<%=user._id%>/edit">Edit</a>
-    </section>
 <% } %>
 </main>
 <%- include('../partials/footer')%>
