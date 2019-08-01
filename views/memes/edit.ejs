@@ -8,9 +8,15 @@
         Meme Description
         <input type='text' name="description" value='<%=meme.description%>'/><br/>
         Meme URL*
-        <input type="text" name="urlMeme" value='<%=meme.urlMeme%>'required/><br/>
-        *Check this box if this links to a video (Sorry, we can only embed youtube videos - see if your meme is available there!)
-        <input type="checkbox" name="isVideo" <%if (meme.isVideo === true){ %> checked <%}%>/><br/>  
+        <input type="text" name="urlMeme" value='<%=meme.urlMeme%>'required/><br/>     
+        <br/>
+            <p>
+                <label>
+                    <input type="checkbox" name='isVideo' <%if (meme.isVideo === true){ %> checked="checked" <%}%>/>
+                    <span>Check this box if this links to a video
+            <p>(Sorry, we can only embed youtube videos - see if your meme is available there!)</span>
+                </label>
+            </p>  
         Meme Tags (use ',' to separate multiple tags)
         <input type="text" name="tag" value='<%=meme.tag%>'/><br/>      
         <input type="submit" value="Update Meme"/>
