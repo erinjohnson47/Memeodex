@@ -19,6 +19,8 @@ app.use(session({
     saveUninitialized: false
 }));
 
+require('dotenv').config();
+const PORT = process.env.PORT;
 require('./db/db');
 
 app.use('/users', userRoutes);
@@ -54,6 +56,6 @@ app.get('/logout', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('listening on port 3000')
+app.listen(PORT, () => {
+    console.log(`listening on port ${PORT}`)
 });
