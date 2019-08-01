@@ -1,5 +1,7 @@
 <%- include('../partials/header', {title: 'Memodex Meme Index'})%>
-<h1> Edit your <%=meme.title%></h1>
+<header>
+        <h4> Edit your <%=meme.title%></h4>
+</header>
 <form action='/memes/<%=meme._id%>?_method=PUT' method=POST>
         Meme Title
         <input type="text" name="title" value='<%=meme.title%>' required/><br/>

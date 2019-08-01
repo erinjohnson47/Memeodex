@@ -28,9 +28,9 @@
             <span class="close">&times;</span>
             <div class="modal-text">Login to my Memeodex</div>
             <form action="/users/login" method="POST">
-            <input type='text' name="username" placeholder='username'><br/>
-            <input type='password' name="password" placeholder='password'><br/>
-            <input type="submit" value="login"/>
+            <input type='text' name="username" placeholder='username' class="login-modal"><br/>
+            <input type='password' name="password" placeholder='password' class="login-modal"><br/>
+            <input type="submit" value="login" class="login-modal"/>
             </form>
         </div>
     </div>
@@ -52,7 +52,9 @@ Create a password:* <input type="password" id='password' pattern='.{6,}' title='
 Please re-type your password:<input id='password-confirm' type="password" name='password-confirm' placeholder='confirm your password' required><br/> 
 Enter your email: <input id='email' type="email" name="email" placeholder='email address' required><br/>
 Date of birth:<input type='date' name='dob' required><br/>
+<br/>
 <input type="submit" value="Register!"/>
 </form>
+<br/>
 </main>
 <%- include('../partials/footer')%>
