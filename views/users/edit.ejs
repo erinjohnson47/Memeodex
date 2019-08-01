@@ -1,7 +1,7 @@
 <%- include('../partials/header', {title: 'Memodex: Edit Your Meme'})%>
-<head>
+<header>
     <h4>Edit Your Profile</h4>
-</head>
+</header>
 <form action='/users/<%=user._id%>?_method=PUT' method=POST>
 Enter your name: <input type="text" name="name" placeholder='name' value='<%=user.name%>'><br/>
 Choose a username:<input type="text" name="username" placeholder='username' value='<%=user.username%>'><br/>
