@@ -1,5 +1,5 @@
 # MEMEODEX
-//put an image/logo here
+![meme collage](public/images/memecollage.png)
 
 ## A virtual rolodex of your favorite memes!
 ### Why do you need this?
