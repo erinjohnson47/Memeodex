@@ -1,13 +1,15 @@
 <%- include('../partials/header', {title: 'Memeodex: Virtual Meme Rolodex'})%>
 <header>
-    <h3><a href='/memes/new'>Click to add a Meme!</a></h3>
+    <h4>Explore these dank Memes</h4>
+    <section>
+        <h4><a href='/memes/new' class="clickable waves-effect waves-light">Click to add a Meme!</a></h4>
+    </section>
 </header>    
 <main>
-    <h4>Explore these dank Memes</h4>
     <div class="all-meme-container">
         <% for(let i = 0; i < memes.length; i++){ %>
                 <div class='meme-img-container'>
-                    <div>
+                    <div class='waves-effect waves-light'>
                         <% if(memes[i].isVideo){%>
                             <div class="iframe-div">
                             <iframe width="200" height="118" src="<%=memes[i].urlMeme%>" frameborder="0" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" allowfullscreen class='memeImg'></iframe>
@@ -18,10 +20,12 @@
                         <%}%>
                     </div>
                     <li>
-                        <a href="/memes/<%=memes[i]._id%>"><%=memes[i].title%></a>
+                        <a href="/memes/<%=memes[i]._id%>" class="user-show-button"><%=memes[i].title%></a>
                     </li>
                 </div>
                 <% } %>
     </div>
 </main>
+<br/>
+<br/>
 <%- include('../partials/footer')%>

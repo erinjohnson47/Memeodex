@@ -3,8 +3,8 @@
     <h4>Memeodex Users</h4>
 </header>
 <main>
-    <ul><%for (let i=0; i<users.length; i++) {%>
-        <li><a href="/users/<%=users[i]._id%>"><%=users[i].username%></a></li>
+    <ul class='user-show-button-container'><%for (let i=0; i<users.length; i++) {%>
+        <li><a href="/users/<%=users[i]._id%>" class="clickable waves-effect waves-light user-show-button"><%=users[i].username%></a></li>
     <%}%>
     </ul>
 </main>

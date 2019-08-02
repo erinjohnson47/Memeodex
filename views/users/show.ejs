@@ -1,13 +1,12 @@
 <%- include('../partials/header', {title: 'Memeodex: User Profile'})%>
 <header>
 <%if (userId === user._id.toString()) { %>
-<h4>Hi, <%=user.name%></h4>
+<h4>Welcome Back, <%=user.name%></h4>
 <%} else {%>
-<h4>Profile for <%=user.username%></h4>
+<h4>Welcome to your Profile, <%=user.username%></h4>
 <%}%>
 </header>
 <main>
-<br/>
  <% if (userId === user._id.toString()) { %>
     Name: <%=user.name%><br/>
     Username: <%=user.username%><br/>
@@ -15,7 +14,7 @@
     Date of birth: <%=user.dob%><br/>
     <%}%>
 <% if (userId === user._id.toString()) { %>
-<a href='/memes/new'>click here to add a meme</a><br/>
+<h4><a href='/memes/new' class="clickable waves-effect waves-light">Click to add a Meme!</a></h4>
 Your Memes:
 <%} else {%>
 Memes saved by <%=user.name%>
@@ -34,11 +33,14 @@ Memes saved by <%=user.name%>
                     </div>
                 <% } %>
     </section>
+    <br/>
+    <div class='user-show-button-container'>
     <% if (userId === user._id.toString()) { %>
     <section>
-        <a href="/users/<%=user._id%>/edit">Edit your Profile</a>
+        <a href="/users/<%=user._id%>/edit" class="clickable waves-effect waves-light user-show-button">Edit your Profile</a>
     </section>
-    <button id="myBtn4">Delete Profile</button>
+    <br/>
+    <button id="myBtn4" class="clickable waves-effect waves-light user-show-button">Delete Profile</button>
         <div id="myModal4" class="my-modal">
             <div class="modal-stuff">
                 <span id="close4">&times;</span>
@@ -50,6 +52,8 @@ Memes saved by <%=user.name%>
                 *Warning: this will delete your profile, all associated information and all memes associated with your username!
             </div>
         </div>
+    </div>
 <% } %>
 </main>
+<br/>
 <%- include('../partials/footer')%>
