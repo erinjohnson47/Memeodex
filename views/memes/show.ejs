@@ -3,9 +3,9 @@
         <br/>
         <section>
             <div>
-                <h5>Meme Title</h5>
+                <h5>Title</h5>
                 <%=meme.title%><br/>
-                <h5>Meme Description</h5> <%=meme.description%><br/>
+                <h5>Description</h5> <%=meme.description%><br/>
                 <br/>
                 Posted By: <a href='/users/<%=user._id%>'> <%=user.username%></a>
             </div><br/>
@@ -20,7 +20,7 @@
         <br/>
         <section>
             <%if(meme.tag) { %>
-                tags: <%=meme.tag%>
+                Tags: <%=meme.tag%>
             <%}%>
         </section>
     <div class='user-show-button-container'>
