@@ -61,8 +61,10 @@ const memeController = {
         }
     },
     edit: async (req, res) => {
-        const findUser = await User.findOne({_id:req.params.id});
-        if (findUser._id.toString() === req.session.userId.toString()){
+        const findMeme = await Meme.findOne({_id:req.params.id});
+        console.log(findMeme, '<-find user in edit route')
+        console.log(req.session.userId, '<-req.session.userId')
+        if (findMeme.user.toString() === req.session.userId.toString()){
             try {
                 const foundMeme = await Meme.findById(req.params.id)
                 res.render('memes/edit.ejs', {
