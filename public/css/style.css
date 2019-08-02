@@ -127,6 +127,7 @@ input {
     color: #039be5 !important;
 }
 
+
 .clickable {
     transition: all 0.2s;
 }
@@ -140,13 +141,25 @@ input {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
     border: none;
     background-color: transparent;
-    color: #039be5;
+    color: #039be5 !important;
     margin: 10px;
 }
 
 .user-show-button-container {
     display:flex;
     justify-content: center;
+}
+
+#publish-meme {
+    color: #039be5 !important;
+}
+
+#update-meme {
+    color: #039be5 !important;
+}
+
+#update-user {
+    color: #039be5 !important;  
 }
 
 /* The Modal */
