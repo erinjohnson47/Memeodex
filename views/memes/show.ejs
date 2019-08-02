@@ -1,10 +1,12 @@
 <%- include('../partials/header', {title: 'Memeodex: View a Meme'})%>
     <main>
+        <br/>
         <section>
             <div>
                 <h5>Meme Title</h5>
                 <%=meme.title%><br/>
                 <h5>Meme Description</h5> <%=meme.description%><br/>
+                <br/>
                 Posted By: <a href='/users/<%=user._id%>'> <%=user.username%></a>
             </div><br/>
             <div>
@@ -15,14 +17,16 @@
                 <%}%>
             </div>
         </section>
+        <br/>
         <section>
             <%if(meme.tag) { %>
                 tags: <%=meme.tag%>
             <%}%>
         </section>
+    <div class='user-show-button-container'>
         <section>
         <% if (userId === user._id.toString()) { %>
-            <button id="myBtn3">Delete Meme</button>
+            <button id="myBtn3" class="clickable waves-effect waves-light user-show-button">Delete Meme</button>
             <div id="myModal3" class="my-modal">
             <div class="modal-stuff">
                 <span id="close3">&times;</span>
@@ -34,9 +38,10 @@
             </div>
             </section>
             <section>
-            <a href="/memes/<%=meme._id%>/edit">Edit</a>
+            <a href="/memes/<%=meme._id%>/edit" class="clickable waves-effect waves-light user-show-button">Edit Meme</a>
             </section>
         <%}%>
+        </div>
     </main>
-
+<br/>
 <%- include('../partials/footer')%>
