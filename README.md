@@ -44,7 +44,7 @@ Memeodex is a personal database curated **by** you, **for** you, to store links 
 ![meme edit page](public/images/views_meme_edit.jpg)
 
 ### The Group
-This project is being worked on by Austin Suen and Erin Johnson.  Erin will be the github manager. To start off the project, Erin will be working on the readme file, and Austin will be working on the wireframes for the readme file. After finalizing the project plan, Erin will work on the User model/controllers/routes/views and Austin will work on the meme model/controllers/routes/views.  We will work together to style the pages, troubleshoot any specific issues, and if there's time, to add any additional features we are considering.
+This project is being worked on by Austin Suen and Erin Johnson.  Erin was the github manager. Erin drafted the readme file, worked on the user model and user CRUD routes/controllers and set up the login and password encryption/authentication verifications and worked with materialize to make the nav-bar drop down when the page re-sizes and is very proud of the collage she put together as the page banner. Austin worked on the meme model and meme CRUD routes/controllers, and took on the bulk of the styling and the functionality specifically relating to styling and modals.  Erin and Austin worked well together when discussing style and troubleshooting issues.
 
 #### Future Features We'd Love to Add
 - Search by tags and/or usernames
@@ -56,6 +56,4 @@ This project is being worked on by Austin Suen and Erin Johnson.  Erin will be t
 #### Road blocks or works in progress
 - only set up to host videos from youtube right now
 - cannot host content from Tenor - it appears they have some kind of restriction set up
-- video will process as an image if the checkbox isn't checked
-- req.session.message sometimes appears on homepage for seemingly no reason
-
+- video will process as an image (and fail) if the checkbox isn't checked
