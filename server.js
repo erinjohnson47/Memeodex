@@ -21,7 +21,6 @@ app.use(session({
 
 require('dotenv').config();
 const PORT = process.env.PORT;
-// const PORT = 3000;
 require('./db/db');
 
 app.use('/users', userRoutes);
@@ -35,8 +34,6 @@ app.get('/', async (req, res) => {
         userId: req.session.userId,
         memes: findMemes
     })
-    console.log(findMemes, '<-findMemes in home route')
-    console.log(req.session.logged)
 })
 app.get('/about', (req, res) => {
     res.render('about.ejs', {
@@ -44,7 +41,6 @@ app.get('/about', (req, res) => {
         isLogged: req.session.logged,
         userId: req.session.userId,
     })
-    console.log(req.session.message)
 })
 
 app.get('/logout', (req, res) => {

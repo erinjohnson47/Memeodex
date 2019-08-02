@@ -5,7 +5,9 @@
             <div>
                 <h5>Title</h5>
                 <%=meme.title%><br/>
+                <%if(meme.description) {%>
                 <h5>Description</h5> <%=meme.description%><br/>
+                    <% } %>
                 <br/>
                 Posted By: <a href='/users/<%=user._id%>'> <%=user.username%></a>
             </div><br/>
