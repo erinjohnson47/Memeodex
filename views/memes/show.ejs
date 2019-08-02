@@ -9,9 +9,9 @@
             </div><br/>
             <div>
                 <% if(meme.isVideo){%>
-                    <iframe width="200" height="118" src="<%=meme.urlMeme%>" frameborder="0" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" allowfullscreen class='memeImg'></iframe>
+                    <iframe width="200" src="<%=meme.urlMeme%>" frameborder="0" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" allowfullscreen class='meme-show-vid'></iframe>
                 <%} else {%>
-                <img src="<%=meme.urlMeme%>" class='memeImg'/>
+                <img src="<%=meme.urlMeme%>" class='meme-show-img'/>
                 <%}%>
             </div>
         </section>
