@@ -4,7 +4,10 @@
     font-weight: normal;
     font-style: normal;
 }
-
+.banner {
+    height: auto; 
+    width: 100%;
+}
 .error-message {
     color: red;
     font-weight: bold;
@@ -35,6 +38,10 @@ nav .right {
     -1px 1px 0 #000,
     1px 1px 0 #000;
     margin-right: 10px;
+}
+
+nav {
+    margin-top: -5px;
 }
 
 ul {
