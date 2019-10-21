@@ -3,13 +3,11 @@
     <h4>Edit Your Profile</h4>
 </section>
 <form action='/users/<%=user._id%>?_method=PUT' method=POST>
-Enter your name: <input type="text" name="name" placeholder='name' value='<%=user.name%>'><br/>
-Choose a username:<input type="text" name="username" placeholder='username' value='<%=user.username%>'><br/>
-Create a password:* <input type="password" id='password' pattern='.{6,}' title='password must be at least 6 characters in length' name='password' placeholder='password'><br/>*must be a minimum of 6 characters in length<br/>
-Please re-type your password:<input id='password-confirm' type="password" name='password-confirm' placeholder='confirm your password'><br/>
-Enter your email: <input type="email" name="email" placeholder='email address' value='<%=user.email%>' required><br/>
-Date of birth:<input type='date' name='dob' required value='<%=user.dob%>'><br/>
-<br/>
+New username:<input type="text" name="username" placeholder='username' value='<%=user.username%>'><br/>
+New password:* <input type="password" id='password' pattern='.{6,}' title='password must be at least 6 characters in length' name='password' placeholder='password'><br/>*must be a minimum of 6 characters in length<br/>
+Please re-type your new password:<input id='password-confirm' type="password" name='password-confirm' placeholder='confirm your password'><br/>
+New email: <input type="email" name="email" placeholder='email address' value='<%=user.email%>' required><br/>
+
 <input type="submit" value="Update your profile!" class="clickable waves-effect waves-light user-show-button" id="update-user"/>
 </form>
 <br/>

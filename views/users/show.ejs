@@ -1,17 +1,15 @@
 <%- include('../partials/header', {title: 'Memeodex: User Profile'})%>
 <section>
 <%if (userId === user._id.toString()) { %>
-    <h4>Welcome Back, <%=user.name%></h4>
+    <h4>Welcome, <%=user.username%></h4>
 <%} else {%>
     <h4><%=user.username%>'s profile</h4>
 <% } %></h4>
 </header>
 <main>
  <% if (userId === user._id.toString()) { %>
-    Name: <%=user.name%><br/>
     Username: <%=user.username%><br/>
     Email: <%=user.email%><br/>
-    Date of birth: <%=user.dob%><br/>
     <%}%>
 <% if (userId === user._id.toString()) { %>
 <h4><a href='/memes/new' class="clickable waves-effect waves-light">Click to add a Meme!</a></h4>
