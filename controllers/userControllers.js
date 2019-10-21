@@ -4,18 +4,18 @@ const Meme = require('../models/Meme');
 const bcrypt = require('bcryptjs')
 
 const userController = {
-    // index: async (req, res) => {
-    //     try {
-    //         const foundUsers = await User.find({});
-    //         res.render('users/index.ejs', {
-    //             users: foundUsers,
-    //             isLogged: req.session.logged,
-    //             userId: req.session.userId,
-    //         })
-    //     } catch (err) {
-    //         res.send(err);
-    //     }
-    // },
+    index: async (req, res) => {
+        try {
+            const foundUsers = await User.find({});
+            res.render('users/index.ejs', {
+                users: foundUsers,
+                isLogged: req.session.logged,
+                userId: req.session.userId,
+            })
+        } catch (err) {
+            res.send(err);
+        }
+    },
     register: (req, res) => {
         res.render('users/register.ejs', {
             message: req.session.message,
