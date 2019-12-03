@@ -24,7 +24,7 @@ const currentUserId = (req, res, next) => {
 
 router.get('/register', userController.register);
 router.post('/login',userController.login);
-router.get('/', isLogged, currentUserId, userController.index);
+// router.get('/', isLogged, currentUserId, userController.index);
 router.post('/', userController.create);
 router.get('/:id', isLogged, currentUserId, userController.profile);
 router.get('/:id/edit', isLogged, currentUserId, userController.edit);
